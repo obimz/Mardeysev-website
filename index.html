@@ -1,0 +1,2415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mardysev Solar Limited — Clean Energy Solutions for Nigeria</title>
+  <meta name="description" content="Solar energy consulting, design, and installation across Nigeria. 6.9MW+ generated, 5.3MWP+ installed, 12MWH+ battery storage deployed.">
+
+  <!-- Google Fonts: Space Grotesk (geometric sans headlines) + Source Serif 4 (editorial body) + Plus Jakarta Sans for UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================
+       DESIGN TOKENS & SYSTEM VARIABLES
+       ========================================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Brand Color Palette */
+      --charcoal-green: #0A1411;
+      --charcoal-surface: #11201B;
+      --charcoal-card: #162923;
+      --charcoal-border: rgba(255, 255, 255, 0.08);
+
+      --deep-pine: #1E3831;
+      --pine-surface: #26443C;
+      --pine-light: #355E53;
+
+      --solar-gold: #F5A623;
+      --solar-amber: #E28C05;
+      --solar-gold-soft: rgba(245, 166, 35, 0.12);
+      --solar-gold-glow: rgba(245, 166, 35, 0.25);
+
+      --warm-paper: #FAF8F4;
+      --warm-paper-alt: #F2EFE8;
+      --warm-card: #FFFFFF;
+      --paper-border: rgba(18, 36, 30, 0.08);
+
+      --near-black: #0E1311;
+      --text-muted: #53645F;
+      --text-light-muted: rgba(250, 248, 244, 0.65);
+      --white: #FFFFFF;
+
+      /* Typography */
+      --font-headline: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Source Serif 4', Georgia, serif;
+      --font-ui: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      /* Spacing Scale */
+      --space-2xs: 0.25rem;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4.5rem;
+      --space-2xl: 7.5rem;
+
+      /* Layout */
+      --max-content: 75rem;
+      --max-prose: 42rem;
+      --gutter: clamp(1.25rem, 5vw, 3rem);
+
+      /* Shadows & Radii */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-pill: 9999px;
+
+      --shadow-subtle: 0 4px 20px -2px rgba(10, 20, 17, 0.04);
+      --shadow-card: 0 12px 36px -4px rgba(10, 20, 17, 0.07);
+      --shadow-glow: 0 0 25px rgba(245, 166, 35, 0.25);
+    }
+
+    /* ==========================================================
+       BASE & RESET
+       ========================================================== */
+    html {
+      scroll-behavior: smooth;
+      font-size: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--near-black);
+      background-color: var(--warm-paper);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--near-black);
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: clamp(2.5rem, 6vw, 4.25rem); font-weight: 700; }
+    h2 { font-size: clamp(2rem, 4vw, 2.75rem); }
+    h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+    h4 { font-size: 1.125rem; font-weight: 600; }
+
+    p {
+      max-width: var(--max-prose);
+      color: var(--text-muted);
+    }
+
+    a {
+      color: var(--deep-pine);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--solar-amber);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--solar-gold);
+      outline-offset: 3px;
+    }
+
+    /* ==========================================================
+       LAYOUT UTILITIES
+       ========================================================== */
+    .container {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+
+    .section {
+      padding-top: var(--space-2xl);
+      padding-bottom: var(--space-2xl);
+      position: relative;
+    }
+
+    .section--dark {
+      background-color: var(--charcoal-green);
+      color: var(--warm-paper);
+    }
+
+    .section--dark h2,
+    .section--dark h3,
+    .section--dark h4 {
+      color: var(--warm-paper);
+    }
+
+    .section--dark p {
+      color: var(--text-light-muted);
+    }
+
+    .section--pine {
+      background-color: var(--deep-pine);
+      color: var(--warm-paper);
+    }
+
+    .section--pine h2,
+    .section--pine h3,
+    .section--pine h4 {
+      color: var(--warm-paper);
+    }
+
+    .section--pine p {
+      color: var(--text-light-muted);
+    }
+
+    .section-header {
+      margin-bottom: var(--space-xl);
+    }
+
+    .section-header.text-center {
+      text-align: center;
+    }
+
+    .section-header.text-center p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--solar-gold);
+      background: rgba(245, 166, 35, 0.1);
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-sm);
+      border: 1px solid rgba(245, 166, 35, 0.2);
+    }
+
+    .section-header h2 {
+      margin-bottom: var(--space-xs);
+    }
+
+    .section-header p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+    }
+
+    /* Photovoltaic / Solar Grid Subtle Textures */
+    .pv-grid-pattern {
+      background-image:
+        linear-gradient(to right, rgba(245, 166, 35, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(245, 166, 35, 0.05) 1px, transparent 1px);
+      background-size: 3rem 3rem;
+    }
+
+    .cell-grid-divider {
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, var(--paper-border) 20%, var(--paper-border) 80%, transparent);
+      position: relative;
+    }
+
+    .section--dark .cell-grid-divider,
+    .cell-grid-divider--dark {
+      background: linear-gradient(90deg, transparent, rgba(245, 248, 244, 0.1) 20%, rgba(245, 248, 244, 0.1) 80%, transparent);
+    }
+
+    /* ==========================================================
+       BUTTONS & INTERACTIVE
+       ========================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-family: var(--font-ui);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      padding: 0.95rem 1.95rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      letter-spacing: 0.01em;
+      border: 1px solid transparent;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .btn--primary {
+      background-color: var(--solar-gold);
+      color: var(--charcoal-green);
+      border-color: var(--solar-gold);
+      box-shadow: 0 4px 14px rgba(245, 166, 35, 0.3);
+    }
+
+    .btn--primary:hover {
+      background-color: var(--solar-amber);
+      border-color: var(--solar-amber);
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 166, 35, 0.45);
+    }
+
+    .btn--outline {
+      background-color: transparent;
+      color: var(--warm-paper);
+      border-color: rgba(250, 248, 244, 0.25);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn--outline:hover {
+      background-color: rgba(250, 248, 244, 0.1);
+      border-color: var(--warm-paper);
+      color: var(--warm-paper);
+      transform: translateY(-2px);
+    }
+
+    .btn--outline-dark {
+      background-color: transparent;
+      color: var(--charcoal-green);
+      border-color: rgba(10, 20, 17, 0.25);
+    }
+
+    .btn--outline-dark:hover {
+      background-color: var(--charcoal-green);
+      color: var(--warm-paper);
+      transform: translateY(-2px);
+    }
+
+    .btn--sm {
+      padding: 0.6rem 1.25rem;
+      font-size: 0.8125rem;
+    }
+
+    /* ==========================================================
+       SECTION 1: SITE HEADER & NAVIGATION
+       ========================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: rgba(10, 20, 17, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .site-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem var(--gutter);
+      max-width: var(--max-content);
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--warm-paper);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo:hover {
+      color: var(--warm-paper);
+    }
+
+    .logo-icon-wrapper {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon {
+      width: 30px;
+      height: 30px;
+      border: 1.5px solid var(--solar-gold);
+      border-radius: 50%;
+      position: relative;
+      background: radial-gradient(circle, rgba(245, 166, 35, 0.25) 0%, transparent 70%);
+      box-shadow: 0 0 12px var(--solar-gold-glow);
+    }
+
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      background: var(--solar-gold);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--solar-gold);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(250, 248, 244, 0.75);
+      text-decoration: none;
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--warm-paper);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-links a.active {
+      color: var(--solar-gold);
+      font-weight: 600;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0.85rem;
+      right: 0.85rem;
+      height: 2px;
+      background: var(--solar-gold);
+      border-radius: 2px;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      padding: 0.55rem;
+      flex-direction: column;
+      gap: 5px;
+      transition: background-color 0.2s;
+    }
+
+    .nav-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--warm-paper);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+      border-radius: 2px;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ==========================================================
+       SECTION 2: HERO
+       ========================================================== */
+    .hero {
+      background: radial-gradient(circle at 80% 20%, rgba(38, 68, 60, 0.4) 0%, transparent 60%),
+                  radial-gradient(circle at 10% 80%, rgba(245, 166, 35, 0.08) 0%, transparent 50%),
+                  var(--charcoal-green);
+      color: var(--warm-paper);
+      padding: 9rem 0 6rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+
+    /* PV Grid texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(245, 248, 244, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(245, 248, 244, 0.03) 1px, transparent 1px);
+      background-size: 4rem 4rem;
+      pointer-events: none;
+    }
+
+    /* Decorative Glow Line */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.4), transparent);
+    }
+
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-xl);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__content {
+      position: relative;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-ui);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--warm-paper);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-md);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero__badge-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--solar-gold);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--solar-gold);
+      animation: pulse-dot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    .hero__headline {
+      font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+      font-weight: 700;
+      color: var(--warm-paper);
+      margin-bottom: var(--space-md);
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+    }
+
+    .hero__sub {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      line-height: 1.65;
+      color: var(--text-light-muted);
+      max-width: 34rem;
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* Hero Visual Card / Photovoltaic Representation */
+    .hero__visual {
+      position: relative;
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, rgba(22, 41, 35, 0.8) 0%, rgba(10, 20, 17, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card__solar-mesh {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(245, 166, 35, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(245, 166, 35, 0.08) 1px, transparent 1px);
+      background-size: 2.25rem 2.25rem;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card__title {
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--solar-gold);
+    }
+
+    .hero-card__status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #55E598;
+      background: rgba(85, 229, 152, 0.12);
+      border: 1px solid rgba(85, 229, 152, 0.25);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .hero-card__status-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #55E598;
+      border-radius: 50%;
+    }
+
+    .hero-card__center {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card__metric-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .hero-mini-stat {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .hero-mini-stat:hover {
+      border-color: rgba(245, 166, 35, 0.3);
+    }
+
+    .hero-mini-stat__val {
+      font-family: var(--font-headline);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--warm-paper);
+      line-height: 1.2;
+    }
+
+    .hero-mini-stat__lbl {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      color: var(--text-light-muted);
+      margin-top: 0.25rem;
+    }
+
+    .hero-card__power-graph {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+
+    .hero-card__graph-header {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      color: var(--text-light-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-card__graph-svg {
+      width: 100%;
+      height: 48px;
+      overflow: visible;
+    }
+
+    /* ==========================================================
+       SECTION 3: TRUST STRIP
+       ========================================================== */
+    .trust-strip {
+      background-color: var(--warm-card);
+      border-bottom: 1px solid var(--paper-border);
+      padding: var(--space-xl) 0;
+      position: relative;
+    }
+
+    .trust-strip__inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      padding: 1.75rem;
+      background: var(--warm-paper);
+      border: 1px solid var(--paper-border);
+      border-radius: var(--radius-md);
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .trust-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+      border-color: rgba(245, 166, 35, 0.35);
+    }
+
+    .trust-item__icon-wrapper {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-md);
+      background: rgba(30, 56, 49, 0.06);
+      margin-bottom: 0.75rem;
+      border: 1px solid rgba(30, 56, 49, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .trust-item:hover .trust-item__icon-wrapper {
+      background: var(--solar-gold-soft);
+      border-color: rgba(245, 166, 35, 0.3);
+    }
+
+    .trust-item__icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .trust-item h4 {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--near-black);
+      line-height: 1.3;
+    }
+
+    .trust-item p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ==========================================================
+       SECTION 4: ABOUT COMPANY
+       ========================================================== */
+    .about-home {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .about-home__image {
+      background: linear-gradient(135deg, var(--charcoal-surface) 0%, var(--charcoal-green) 100%);
+      aspect-ratio: 4 / 3.4;
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--paper-border);
+      box-shadow: var(--shadow-card);
+    }
+
+    .about-home__image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(245, 166, 35, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(245, 166, 35, 0.08) 1px, transparent 1px);
+      background-size: 2.5rem 2.5rem;
+      pointer-events: none;
+    }
+
+    .about-home__image-graphic {
+      position: relative;
+      z-index: 1;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1rem;
+      opacity: 0.85;
+    }
+
+    .about-home__image span {
+      font-family: var(--font-headline);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: rgba(250, 248, 244, 0.7);
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.05em;
+    }
+
+    .about-home__floating-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: rgba(10, 20, 17, 0.85);
+      border: 1px solid rgba(245, 166, 35, 0.3);
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      backdrop-filter: blur(8px);
+      z-index: 2;
+    }
+
+    .about-home__floating-badge-text {
+      font-family: var(--font-ui);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--warm-paper);
+      line-height: 1.2;
+    }
+
+    .about-home__floating-badge-sub {
+      font-size: 0.7rem;
+      color: var(--solar-gold);
+    }
+
+    .about-home__text h2 {
+      margin-bottom: var(--space-md);
+      line-height: 1.2;
+    }
+
+    .about-home__text p {
+      margin-bottom: var(--space-sm);
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+    }
+
+    .about-home__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: var(--space-xs);
+      margin-bottom: var(--space-md);
+      padding: 0.55rem 1.1rem;
+      border: 1px solid rgba(30, 56, 49, 0.25);
+      background: rgba(30, 56, 49, 0.04);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-ui);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--deep-pine);
+      letter-spacing: 0.02em;
+    }
+
+    .about-home__badge svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .about-home__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-ui);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--deep-pine);
+      text-decoration: none;
+      border-bottom: 2px solid var(--solar-gold);
+      padding-bottom: 3px;
+      transition: all 0.2s;
+    }
+
+    .about-home__link:hover {
+      color: var(--solar-amber);
+      gap: 0.75rem;
+    }
+
+    /* ==========================================================
+       SECTION 5: STATS BAR / OUTPUT METER
+       ========================================================== */
+    .stats-section {
+      background: var(--charcoal-green);
+      padding: var(--space-xl) 0;
+      position: relative;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .output-meter {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .output-meter__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.25rem;
+    }
+
+    .output-meter__label {
+      font-family: var(--font-ui);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--solar-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .output-meter__label::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--solar-gold);
+      box-shadow: 0 0 6px var(--solar-gold);
+    }
+
+    .output-meter__bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .output-meter__segment {
+      padding: 2.25rem 2rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+      clip-path: inset(0 100% 0 0);
+      animation: meter-fill 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+      transition: background 0.3s;
+    }
+
+    .output-meter__segment:hover {
+      background: rgba(245, 166, 35, 0.04);
+    }
+
+    .output-meter__segment:nth-child(1) { animation-delay: 0.2s; }
+    .output-meter__segment:nth-child(2) { animation-delay: 0.4s; }
+    .output-meter__segment:nth-child(3) { animation-delay: 0.6s; }
+    .output-meter__segment:nth-child(4) { animation-delay: 0.8s; }
+
+    .output-meter__segment:last-child { border-right: none; }
+
+    @keyframes meter-fill {
+      to { clip-path: inset(0 0 0 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .output-meter__segment {
+        animation: none;
+        clip-path: none;
+      }
+    }
+
+    .output-meter__value {
+      font-family: var(--font-headline);
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 700;
+      color: var(--solar-gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .output-meter__desc {
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(250, 248, 244, 0.7);
+      letter-spacing: 0.01em;
+    }
+
+    /* ==========================================================
+       SECTION 6: SERVICES / SOLUTIONS
+       ========================================================== */
+    .services-home__intro {
+      max-width: 42rem;
+      margin-bottom: var(--space-xl);
+    }
+
+    .services-home__intro h2 {
+      margin-bottom: var(--space-xs);
+    }
+
+    .service-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-step {
+      padding: 2.5rem 2rem;
+      background: var(--warm-card);
+      border: 1px solid var(--paper-border);
+      border-radius: var(--radius-md);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .service-step:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card);
+      border-color: rgba(245, 166, 35, 0.4);
+    }
+
+    .service-step::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      right: 2rem;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--deep-pine), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-step:hover::before {
+      opacity: 1;
+      background: linear-gradient(90deg, transparent, var(--solar-gold), transparent);
+    }
+
+    .service-step__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-step__number {
+      font-family: var(--font-headline);
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: rgba(30, 56, 49, 0.2);
+      line-height: 1;
+      transition: color 0.3s;
+    }
+
+    .service-step:hover .service-step__number {
+      color: var(--solar-gold);
+    }
+
+    .service-step__icon {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(30, 56, 49, 0.05);
+      border-radius: var(--radius-sm);
+    }
+
+    .service-step h3 {
+      font-size: 1.25rem;
+      margin-bottom: var(--space-xs);
+      line-height: 1.3;
+    }
+
+    .service-step p {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================
+       SECTION 7: WHY CHOOSE US
+       ========================================================== */
+    .wcu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .wcu-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 2.25rem;
+      background: var(--warm-card);
+      border: 1px solid var(--paper-border);
+      border-radius: var(--radius-md);
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-subtle);
+      position: relative;
+    }
+
+    .wcu-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+      border-color: rgba(245, 166, 35, 0.3);
+    }
+
+    .wcu-item__icon-wrapper {
+      width: 54px;
+      height: 54px;
+      border-radius: var(--radius-md);
+      background: rgba(30, 56, 49, 0.05);
+      border: 1px solid rgba(30, 56, 49, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .wcu-item:hover .wcu-item__icon-wrapper {
+      background: var(--solar-gold-soft);
+      border-color: rgba(245, 166, 35, 0.3);
+    }
+
+    .wcu-item__icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .wcu-item h4 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--near-black);
+    }
+
+    .wcu-item p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================
+       SECTION 8: OUR PARTNERS (Marquee)
+       ========================================================== */
+    .partners-section {
+      background-color: var(--warm-card);
+      border-top: 1px solid var(--paper-border);
+      border-bottom: 1px solid var(--paper-border);
+      padding: var(--space-xl) 0;
+      overflow: hidden;
+    }
+
+    .partners-section .section-header {
+      margin-bottom: var(--space-lg);
+    }
+
+    .partners-track {
+      display: flex;
+      width: max-content;
+      animation: partner-scroll 35s linear infinite;
+    }
+
+    .partners-track:hover {
+      animation-play-state: paused;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .partners-track {
+        animation: none;
+        flex-wrap: wrap;
+        width: auto;
+        gap: var(--space-md);
+        justify-content: center;
+      }
+    }
+
+    @keyframes partner-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .partner-logo {
+      flex-shrink: 0;
+      width: 180px;
+      height: 80px;
+      margin: 0 1rem;
+      border: 1px solid var(--paper-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-headline);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(14, 19, 17, 0.45);
+      background: var(--warm-paper);
+      transition: all 0.2s ease;
+      letter-spacing: 0.04em;
+    }
+
+    .partner-logo:hover {
+      border-color: rgba(245, 166, 35, 0.4);
+      color: var(--near-black);
+      background: var(--warm-card);
+    }
+
+    /* ==========================================================
+       SECTION 9: TESTIMONIALS
+       ========================================================== */
+    .testimonials-track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .testimonial {
+      background: var(--charcoal-surface);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2.25rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245, 166, 35, 0.3);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .testimonial__stars {
+      color: var(--solar-gold);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.15em;
+    }
+
+    .testimonial__text {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      color: rgba(250, 248, 244, 0.85);
+      max-width: none;
+    }
+
+    .testimonial__attr {
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--solar-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-style: normal;
+    }
+
+    .testimonial__attr span {
+      color: rgba(250, 248, 244, 0.45);
+      font-weight: 400;
+    }
+
+    /* ==========================================================
+       SECTION 10: FINAL CTA + QUOTE FORM
+       ========================================================== */
+    .cta-final {
+      background: radial-gradient(circle at 10% 20%, rgba(38, 68, 60, 0.6) 0%, transparent 60%),
+                  radial-gradient(circle at 90% 80%, rgba(245, 166, 35, 0.1) 0%, transparent 60%),
+                  var(--deep-pine);
+      color: var(--warm-paper);
+      padding: var(--space-2xl) 0;
+      position: relative;
+    }
+
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 3.5rem 3.5rem;
+      pointer-events: none;
+    }
+
+    .cta-final__inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .cta-final__text h2 {
+      color: var(--warm-paper);
+      margin-bottom: var(--space-sm);
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .cta-final__text p {
+      color: rgba(250, 248, 244, 0.75);
+      margin-bottom: var(--space-lg);
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+
+    .quote-form {
+      background: rgba(10, 20, 17, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+    }
+
+    .quote-form label {
+      font-family: var(--font-ui);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: rgba(250, 248, 244, 0.85);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .quote-form input,
+    .quote-form textarea {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--warm-paper);
+      transition: all 0.2s;
+    }
+
+    .quote-form input:focus,
+    .quote-form textarea:focus {
+      border-color: var(--solar-gold);
+      background: rgba(255, 255, 255, 0.08);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.2);
+    }
+
+    .quote-form input::placeholder,
+    .quote-form textarea::placeholder {
+      color: rgba(250, 248, 244, 0.3);
+    }
+
+    .quote-form textarea {
+      resize: vertical;
+      min-height: 6.5rem;
+    }
+
+    #quote-form-feedback {
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
+      color: var(--solar-gold);
+      background: rgba(245, 166, 35, 0.1);
+      border: 1px solid rgba(245, 166, 35, 0.25);
+      padding: 0.75rem;
+      border-radius: var(--radius-sm);
+      display: none;
+      text-align: center;
+    }
+
+    /* ==========================================================
+       SECTION 11: FOOTER
+       ========================================================== */
+    .site-footer {
+      background-color: var(--charcoal-green);
+      color: rgba(250, 248, 244, 0.55);
+      padding: var(--space-2xl) 0 var(--space-lg);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: var(--space-xl);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--warm-paper);
+      margin-bottom: var(--space-md);
+    }
+
+    .footer-col p {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      max-width: none;
+      color: rgba(250, 248, 244, 0.6);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-col a {
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
+      color: rgba(250, 248, 244, 0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--solar-gold);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(250, 248, 244, 0.6);
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.03);
+      transition: all 0.2s ease;
+    }
+
+    .footer-social a:hover {
+      border-color: var(--solar-gold);
+      color: var(--solar-gold);
+      background: rgba(245, 166, 35, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .footer-bar {
+      margin-top: var(--space-xl);
+      padding-top: var(--space-md);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: var(--font-ui);
+      font-size: 0.8125rem;
+      color: rgba(250, 248, 244, 0.35);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ==========================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================== */
+    @media (max-width: 68rem) {
+      .hero__grid { grid-template-columns: 1fr; }
+      .hero__visual { display: none; }
+      .about-home { grid-template-columns: 1fr; }
+      .service-steps { grid-template-columns: repeat(2, 1fr); }
+      .wcu-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-track { grid-template-columns: repeat(2, 1fr); }
+      .cta-final__inner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); }
+    }
+
+    @media (max-width: 52rem) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--charcoal-green);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 6rem var(--gutter) var(--space-lg);
+        gap: 0;
+        z-index: 99;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a {
+        font-size: 1.25rem;
+        padding: 0.85rem 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .nav-toggle { display: flex; z-index: 101; }
+      .nav-cta { display: none; }
+
+      .hero {
+        min-height: auto;
+        padding: 7.5rem 0 4.5rem;
+      }
+
+      .trust-strip__inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .output-meter__bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .output-meter__segment:nth-child(2) { border-right: none; }
+      .output-meter__segment:nth-child(1),
+      .output-meter__segment:nth-child(2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .testimonials-track {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 36rem) {
+      .trust-strip__inner {
+        grid-template-columns: 1fr;
+      }
+
+      .service-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .wcu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .output-meter__bar {
+        grid-template-columns: 1fr;
+      }
+
+      .output-meter__segment {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       SECTION 1: SITE HEADER with navigation
+       ============================================================ -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="#" class="logo" aria-label="Mardysev Solar — Home">
+        <div class="logo-icon-wrapper">
+          <span class="logo-icon" aria-hidden="true"></span>
+        </div>
+        Mardysev Solar
+      </a>
+
+      <div class="nav-wrapper">
+        <nav id="main-nav" aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Shop</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-cta">
+          <a href="#contact" class="btn btn--primary btn--sm">Get a Free Quote</a>
+        </div>
+
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       SECTION 2: HERO
+       ============================================================ -->
+  <section class="hero" aria-label="Hero">
+    <div class="container">
+      <div class="hero__grid">
+        <div class="hero__content">
+          <div class="hero__badge">
+            <span class="hero__badge-dot"></span>
+            Clean Energy Infrastructure & Consulting
+          </div>
+          <h1 class="hero__headline">
+            Mardysev Solar Limited
+          </h1>
+          <p class="hero__sub">
+            Powering the Future with Clean Affordable and Reliable Energy
+          </p>
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary">Get a free assessment</a>
+            <a href="#projects" class="btn btn--outline">See our work</a>
+          </div>
+        </div>
+
+        <!-- High-tech solar monitoring preview card -->
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hero-card__solar-mesh"></div>
+            <div class="hero-card__header">
+              <span class="hero-card__title">Live Grid Monitor</span>
+              <div class="hero-card__status">
+                <span class="hero-card__status-dot"></span>
+                Active Yield
+              </div>
+            </div>
+
+            <div class="hero-card__center">
+              <div class="hero-card__metric-row">
+                <div class="hero-mini-stat">
+                  <div class="hero-mini-stat__val">5.3 MWp</div>
+                  <div class="hero-mini-stat__lbl">Capacity Delivered</div>
+                </div>
+                <div class="hero-mini-stat">
+                  <div class="hero-mini-stat__val">99.8%</div>
+                  <div class="hero-mini-stat__lbl">System Uptime</div>
+                </div>
+              </div>
+
+              <div class="hero-card__power-graph">
+                <div class="hero-card__graph-header">
+                  <span>Photovoltaic Generation Curve</span>
+                  <span style="color: var(--solar-gold);">Peak 6.9MW</span>
+                </div>
+                <svg class="hero-card__graph-svg" viewBox="0 0 280 48" fill="none">
+                  <path d="M0 44 C40 44, 70 36, 100 16 C130 -2, 170 -2, 200 14 C230 30, 250 40, 280 44" stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M0 44 C40 44, 70 36, 100 16 C130 -2, 170 -2, 200 14 C230 30, 250 40, 280 44 L280 48 L0 48 Z" fill="url(#goldFill)" opacity="0.2"/>
+                  <defs>
+                    <linearGradient id="goldGradient" x1="0" y1="0" x2="280" y2="0" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#E8A33D" stop-opacity="0.2"/>
+                      <stop offset="0.5" stop-color="#F5A623"/>
+                      <stop offset="1" stop-color="#E8A33D" stop-opacity="0.4"/>
+                    </linearGradient>
+                    <linearGradient id="goldFill" x1="140" y1="0" x2="140" y2="48" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#F5A623"/>
+                      <stop offset="1" stop-color="#0A1411" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 3: TRUST STRIP
+       ============================================================ -->
+  <div class="trust-strip">
+    <div class="container trust-strip__inner">
+
+      <!-- Trust item 1: Five Year Warranty -->
+      <div class="trust-item">
+        <div class="trust-item__icon-wrapper">
+          <svg class="trust-item__icon" viewBox="0 0 44 44" fill="none" stroke="#2C4A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 4L6 10v10c0 10 7 17.5 16 20 9-2.5 16-10 16-20V10L22 4z"/>
+            <path d="M15 22l5 5 9-10" stroke="#F5A623" stroke-width="2"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Five Year Warranty</h4>
+          <p>All installations backed by a comprehensive warranty on parts and workmanship.</p>
+        </div>
+      </div>
+
+      <!-- Trust item 2: Free Energy Audit -->
+      <div class="trust-item">
+        <div class="trust-item__icon-wrapper">
+          <svg class="trust-item__icon" viewBox="0 0 44 44" fill="none" stroke="#2C4A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="10" y="6" width="24" height="32" rx="2"/>
+            <path d="M18 6V4h8v2"/>
+            <line x1="16" y1="16" x2="28" y2="16"/>
+            <line x1="16" y1="22" x2="28" y2="22"/>
+            <line x1="16" y1="28" x2="24" y2="28"/>
+            <circle cx="29" cy="31" r="5" stroke="#F5A623" fill="none"/>
+            <path d="M27 31l1.5 1.5L31 29.5" stroke="#F5A623" stroke-width="2"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Free Energy Audit</h4>
+          <p>Complimentary site visit and power consumption analysis before any commitment.</p>
+        </div>
+      </div>
+
+      <!-- Trust item 3: Flexible Payment Plans -->
+      <div class="trust-item">
+        <div class="trust-item__icon-wrapper">
+          <svg class="trust-item__icon" viewBox="0 0 44 44" fill="none" stroke="#2C4A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="22" r="10"/>
+            <path d="M18 16v12M14 20h8M14 24h8"/>
+            <path d="M28 14v16" stroke="#F5A623" stroke-width="2"/>
+            <path d="M25 17l3-3 3 3" stroke="#F5A623" stroke-width="2"/>
+            <path d="M25 27l3 3 3-3" stroke="#F5A623" stroke-width="2"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Spread Payment Options</h4>
+          <p>Flexible instalment plans that make solar accessible without a large upfront cost.</p>
+        </div>
+      </div>
+
+      <!-- Trust item 4: Fast Installation -->
+      <div class="trust-item">
+        <div class="trust-item__icon-wrapper">
+          <svg class="trust-item__icon" viewBox="0 0 44 44" fill="none" stroke="#2C4A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="22" cy="24" r="12"/>
+            <polyline points="22,16 22,24 28,24" stroke="#F5A623" stroke-width="2"/>
+            <path d="M16 8h12"/>
+            <path d="M22 8V10"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Fast Installation</h4>
+          <p>Most residential systems installed and commissioned within 48 hours.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       SECTION 4: ABOUT COMPANY
+       ============================================================ -->
+  <section class="section" id="about" aria-label="About Mardysev Solar">
+    <div class="container">
+      <div class="about-home">
+        <div class="about-home__image" aria-label="Company photo placeholder">
+          <svg class="about-home__image-graphic" viewBox="0 0 80 80" fill="none">
+            <rect x="8" y="8" width="64" height="64" rx="4" stroke="rgba(245, 166, 35, 0.4)" stroke-width="2"/>
+            <line x1="8" y1="29" x2="72" y2="29" stroke="rgba(245, 166, 35, 0.3)"/>
+            <line x1="8" y1="51" x2="72" y2="51" stroke="rgba(245, 166, 35, 0.3)"/>
+            <line x1="29" y1="8" x2="29" y2="72" stroke="rgba(245, 166, 35, 0.3)"/>
+            <line x1="51" y1="8" x2="51" y2="72" stroke="rgba(245, 166, 35, 0.3)"/>
+            <circle cx="40" cy="40" r="14" fill="#F5A623" fill-opacity="0.2" stroke="#F5A623" stroke-width="1.5"/>
+          </svg>
+          <span>Mardysev Solar Infrastructure</span>
+
+          <div class="about-home__floating-badge">
+            <svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="#F5A623" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="9" r="7.5"/>
+              <path d="M6 9l2 2 4-4"/>
+            </svg>
+            <div>
+              <div class="about-home__floating-badge-text">Nigeria Energy Standards</div>
+              <div class="about-home__floating-badge-sub">Tier-1 Components</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-home__text">
+          <div class="section-tag">About Company</div>
+          <h2>Leading Solar Energy Consulting Firm</h2>
+          <p>
+            Mardysev Solar Limited is a leading solar energy consulting firm dedicated to
+            accelerating the transition to clean, renewable energy. We specialize in providing
+            expert guidance across all solar project stages and work with businesses, communities,
+            and governments.
+          </p>
+          <p>
+            Our team brings hands-on experience across residential, commercial, and institutional
+            projects, delivering complete solar energy solutions from initial consultation through
+            long-term maintenance and support.
+          </p>
+          <div>
+            <div class="about-home__badge">
+              <svg viewBox="0 0 18 18" fill="none" stroke="#2C4A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="9" r="7.5"/>
+                <path d="M6 9l2 2 4-4" stroke="#F5A623" stroke-width="2"/>
+              </svg>
+              Certified Company
+            </div>
+          </div>
+          <a href="#about" class="about-home__link">Learn more about us &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 5: STATS BAR / OUTPUT METER
+       ============================================================ -->
+  <div class="stats-section" aria-label="Company performance metrics">
+    <div class="output-meter">
+      <div class="output-meter__header">
+        <p class="output-meter__label">Cumulative Performance & Output</p>
+      </div>
+      <div class="output-meter__bar" role="list">
+        <div class="output-meter__segment" role="listitem">
+          <div class="output-meter__value">3+ yrs</div>
+          <div class="output-meter__desc">In business</div>
+        </div>
+        <div class="output-meter__segment" role="listitem">
+          <div class="output-meter__value">6.9 MW+</div>
+          <div class="output-meter__desc">Green energy generated</div>
+        </div>
+        <div class="output-meter__segment" role="listitem">
+          <div class="output-meter__value">5.3 MWp+</div>
+          <div class="output-meter__desc">Installed PV capacity</div>
+        </div>
+        <div class="output-meter__segment" role="listitem">
+          <div class="output-meter__value">12 MWh+</div>
+          <div class="output-meter__desc">Active storage system</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       SECTION 6: SERVICES — clear 4-step process
+       ============================================================ -->
+  <section class="section" id="services" aria-label="Our services">
+    <div class="container">
+      <div class="services-home__intro">
+        <div class="section-tag">Solutions & Services</div>
+        <h2>Efficient And Resilient Energy Solutions</h2>
+        <p>
+          Provides renewable energy solutions across all stages of your solar project.
+        </p>
+      </div>
+
+      <div class="service-steps">
+        <div class="service-step">
+          <div class="service-step__header">
+            <div class="service-step__number">01</div>
+            <div class="service-step__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C4A42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+          </div>
+          <h3>Energy Audits / Engagements</h3>
+          <p>
+            Comprehensive site assessment and power consumption analysis to determine
+            your exact solar requirements and feasibility.
+          </p>
+        </div>
+
+        <div class="service-step">
+          <div class="service-step__header">
+            <div class="service-step__number">02</div>
+            <div class="service-step__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C4A42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+          </div>
+          <h3>Strategy & Evaluation</h3>
+          <p>
+            Custom system design, financial modeling, and equipment selection based
+            on your energy goals and budget constraints.
+          </p>
+        </div>
+
+        <div class="service-step">
+          <div class="service-step__header">
+            <div class="service-step__number">03</div>
+            <div class="service-step__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C4A42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+          </div>
+          <h3>Execution</h3>
+          <p>
+            Professional installation by certified technicians with full permitting,
+            electrical integration, and system commissioning.
+          </p>
+        </div>
+
+        <div class="service-step">
+          <div class="service-step__header">
+            <div class="service-step__number">04</div>
+            <div class="service-step__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C4A42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20v-6M6 20V10M18 20V4"></path>
+              </svg>
+            </div>
+          </div>
+          <h3>Operations & Maintenance</h3>
+          <p>
+            Remote monitoring, scheduled maintenance, and responsive support to keep
+            your system performing at peak efficiency.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="cell-grid-divider" aria-hidden="true"></div>
+
+
+  <!-- ============================================================
+       SECTION 7: WHY CHOOSE US
+       ============================================================ -->
+  <section class="section" aria-label="Why choose us">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Value Proposition</div>
+        <h2>Why choose Mardysev Solar</h2>
+        <p>Real reasons, not marketing slogans.</p>
+      </div>
+
+      <div class="wcu-grid">
+
+        <!-- 1: 24/7 Power -->
+        <div class="wcu-item">
+          <div class="wcu-item__icon-wrapper">
+            <svg class="wcu-item__icon" viewBox="0 0 40 40" fill="none" stroke="#2C4A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="16" cy="20" r="6"/>
+              <line x1="16" y1="10" x2="16" y2="8"/>
+              <line x1="16" y1="32" x2="16" y2="30"/>
+              <line x1="6" y1="20" x2="8" y2="20"/>
+              <path d="M30 14a8 8 0 010 12" stroke="#F5A623" stroke-width="2"/>
+              <path d="M27 17a5 5 0 010 6" stroke="#F5A623" stroke-width="2"/>
+            </svg>
+          </div>
+          <h4>24/7 Power, No Blackouts</h4>
+          <p>Never worry about Grid failures or fuel scarcity.</p>
+        </div>
+
+        <!-- 2: Save 80% -->
+        <div class="wcu-item">
+          <div class="wcu-item__icon-wrapper">
+            <svg class="wcu-item__icon" viewBox="0 0 40 40" fill="none" stroke="#2C4A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="8" width="28" height="24" rx="2"/>
+              <polyline points="11,26 17,20 22,23 29,14" stroke="#F5A623" stroke-width="2"/>
+              <polyline points="25,14 29,14 29,18" stroke="#F5A623" stroke-width="2"/>
+            </svg>
+          </div>
+          <h4>Save up to 80% on Power Costs</h4>
+          <p>Slash your fuel and electricity bills.</p>
+        </div>
+
+        <!-- 3: Flexible payments -->
+        <div class="wcu-item">
+          <div class="wcu-item__icon-wrapper">
+            <svg class="wcu-item__icon" viewBox="0 0 40 40" fill="none" stroke="#2C4A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="8" y="10" width="24" height="8" rx="1"/>
+              <rect x="8" y="22" width="24" height="8" rx="1" stroke="#F5A623" stroke-width="2"/>
+              <line x1="14" y1="14" x2="26" y2="14"/>
+              <line x1="14" y1="26" x2="26" y2="26" stroke="#F5A623" stroke-width="2"/>
+            </svg>
+          </div>
+          <h4>Pay Small-Small</h4>
+          <p>Flexible monthly plans to fit your budget.</p>
+        </div>
+
+        <!-- 4: Fast install -->
+        <div class="wcu-item">
+          <div class="wcu-item__icon-wrapper">
+            <svg class="wcu-item__icon" viewBox="0 0 40 40" fill="none" stroke="#2C4A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="20" cy="22" r="12"/>
+              <polyline points="20,14 20,22 26,22" stroke="#F5A623" stroke-width="2"/>
+              <path d="M14 6h12"/>
+              <path d="M20 6V8"/>
+            </svg>
+          </div>
+          <h4>Fast Installation</h4>
+          <p>Up and running in as little as 48 hours.</p>
+        </div>
+
+        <!-- 5: Quick response -->
+        <div class="wcu-item">
+          <div class="wcu-item__icon-wrapper">
+            <svg class="wcu-item__icon" viewBox="0 0 40 40" fill="none" stroke="#2C4A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 24v-4a12 12 0 0124 0v4"/>
+              <rect x="6" y="24" width="6" height="8" rx="2"/>
+              <rect x="28" y="24" width="6" height="8" rx="2"/>
+              <path d="M34 32v2a4 4 0 01-4 4h-6" stroke="#F5A623" stroke-width="2"/>
+            </svg>
+          </div>
+          <h4>Quick Response</h4>
+          <p>24/7 hours response.</p>
+        </div>
+
+        <!-- 6: Durable systems -->
+        <div class="wcu-item">
+          <div class="wcu-item__icon-wrapper">
+            <svg class="wcu-item__icon" viewBox="0 0 40 40" fill="none" stroke="#2C4A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="20" cy="20" r="6"/>
+              <circle cx="20" cy="20" r="2" fill="#F5A623" stroke="#F5A623"/>
+              <line x1="20" y1="8" x2="20" y2="12"/>
+              <line x1="20" y1="28" x2="20" y2="32"/>
+              <line x1="8" y1="20" x2="12" y2="20"/>
+              <line x1="28" y1="20" x2="32" y2="20"/>
+              <line x1="11.5" y1="11.5" x2="14.3" y2="14.3"/>
+              <line x1="25.7" y1="25.7" x2="28.5" y2="28.5"/>
+              <line x1="11.5" y1="28.5" x2="14.3" y2="25.7"/>
+              <line x1="25.7" y1="14.3" x2="28.5" y2="11.5"/>
+            </svg>
+          </div>
+          <h4>Durable, Low-Maintenance Systems</h4>
+          <p>No stress, no fumes, just power.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 8: OUR PARTNERS
+       ============================================================ -->
+  <section class="partners-section" id="projects" aria-label="Our partners">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Ecosystem</div>
+        <h2>Our partners</h2>
+      </div>
+    </div>
+    <!-- Scrolling track — logos duplicated for seamless loop -->
+    <div class="partners-track" aria-label="Partner logos">
+      <div class="partner-logo">Partner 1</div>
+      <div class="partner-logo">Partner 2</div>
+      <div class="partner-logo">Partner 3</div>
+      <div class="partner-logo">Partner 4</div>
+      <div class="partner-logo">Partner 5</div>
+      <div class="partner-logo">Partner 6</div>
+      <div class="partner-logo">Partner 7</div>
+      <div class="partner-logo">Partner 8</div>
+      <!-- Duplicate set for seamless CSS loop -->
+      <div class="partner-logo">Partner 1</div>
+      <div class="partner-logo">Partner 2</div>
+      <div class="partner-logo">Partner 3</div>
+      <div class="partner-logo">Partner 4</div>
+      <div class="partner-logo">Partner 5</div>
+      <div class="partner-logo">Partner 6</div>
+      <div class="partner-logo">Partner 7</div>
+      <div class="partner-logo">Partner 8</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 9: TESTIMONIALS
+       ============================================================ -->
+  <section class="section section--dark" id="team" aria-label="Client testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Client Stories</div>
+        <h2>What our clients say</h2>
+        <p>Feedback from homes and businesses we've powered.</p>
+      </div>
+
+      <div class="testimonials-track" role="list">
+
+        <blockquote class="testimonial" role="listitem">
+          <div>
+            <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial__text">
+              "Switching from spending over ₦150,000 monthly on generator fuel to almost zero has been a game-changer. Mardysev Solar delivered with top-notch professionalism and quality equipment."
+            </p>
+          </div>
+          <cite class="testimonial__attr">
+            — Mr. Adewale <span>· Lagos</span>
+          </cite>
+        </blockquote>
+
+        <blockquote class="testimonial" role="listitem">
+          <div>
+            <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial__text">
+              "From consultation to installation of our 10kVA system, the process was seamless. Their after-sales support and monitoring give us total peace of mind."
+            </p>
+          </div>
+          <cite class="testimonial__attr">
+            — Mrs. Chidinma <span>· Abuja</span>
+          </cite>
+        </blockquote>
+
+        <blockquote class="testimonial" role="listitem">
+          <div>
+            <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial__text">
+              "We used to run our generator 24/7 for business operations. Mardysev right-sized our commercial solar setup and cut our operating costs significantly."
+            </p>
+          </div>
+          <cite class="testimonial__attr">
+            — Engr. Sola <span>· Ikeja, Lagos</span>
+          </cite>
+        </blockquote>
+
+        <blockquote class="testimonial" role="listitem">
+          <div>
+            <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial__text">
+              "The flexible payment plan made solar accessible for our household without breaking the bank. The system has been running perfectly since day one."
+            </p>
+          </div>
+          <cite class="testimonial__attr">
+            — Mrs. Fatima <span>· Port Harcourt</span>
+          </cite>
+        </blockquote>
+
+        <blockquote class="testimonial" role="listitem">
+          <div>
+            <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial__text">
+              "Extremely neat installation and genuine tier-1 components. The team arrived on time, completed the work within 48 hours, and explained everything clearly."
+            </p>
+          </div>
+          <cite class="testimonial__attr">
+            — Mr. Kelvin <span>· Lekki, Lagos</span>
+          </cite>
+        </blockquote>
+
+        <blockquote class="testimonial" role="listitem">
+          <div>
+            <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial__text">
+              "What stood out for me was their honesty and customer care. They didn't try to oversell us — they delivered exactly what our property needed on schedule."
+            </p>
+          </div>
+          <cite class="testimonial__attr">
+            — Mrs. Grace <span>· Enugu</span>
+          </cite>
+        </blockquote>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 10: FINAL CTA + QUOTE FORM
+       ============================================================ -->
+  <section class="cta-final" id="contact" aria-label="Request a quote">
+    <div class="container cta-final__inner">
+      <div class="cta-final__text">
+        <div class="section-tag">Let's Connect</div>
+        <h2>About Your Next Project. Get In Touch</h2>
+        <p>
+          Tell us about your property and power needs. We'll get back to you with an honest
+          assessment of what solar can do for your situation — no obligation, no oversized quotes.
+        </p>
+        <a href="mailto:info@mardysevgr.com" class="btn btn--primary">Get A Free Quote</a>
+      </div>
+
+      <!-- Visual-only quote form (no backend) -->
+      <form class="quote-form" aria-label="Quote request form" onsubmit="handleQuoteForm(event)">
+        <label>
+          Name
+          <input type="text" name="name" placeholder="Your full name" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </label>
+        <label>
+          Message
+          <textarea name="message" placeholder="Tell us about your property and power needs…" required></textarea>
+        </label>
+        <button type="submit" class="btn btn--primary" style="width:100%;text-align:center;">Send message</button>
+        <p id="quote-form-feedback" aria-live="polite">
+          This is a visual demo — no message was sent. In production, this form connects to a backend.
+        </p>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 11: FOOTER
+       ============================================================ -->
+  <footer class="site-footer" id="blog" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Column 1: Company info -->
+        <div class="footer-col">
+          <h4>Mardysev Solar Limited</h4>
+          <p style="margin-bottom: 1rem;">
+            <strong style="color: var(--warm-paper);">Lagos Office</strong><br>
+            11 Bassie Ogamba Street,<br>
+            off Adeniran Ogunsanya street,<br>
+            Surulere, Lagos
+          </p>
+          <p style="margin-bottom: 1rem;">
+            <strong style="color: var(--warm-paper);">Enugu Office</strong><br>
+            Arizona House, No. 4 Old Abakiliki Road,<br>
+            opposite Trinity Estate, Thinkers Corner Emene,<br>
+            Enugu State
+          </p>
+          <p style="margin-top: 1rem;">
+            Email: <a href="mailto:info@mardysevgr.com">info@mardysevgr.com</a><br>
+            <a href="mailto:sales@mardysevgr.com">sales@mardysevgr.com</a><br>
+            Phone: <a href="tel:+2347030345373">+234 703 034 5373</a><br>
+            <a href="tel:+2349031311091">+234 903 131 1091</a>
+          </p>
+        </div>
+
+        <!-- Column 2: Quick links -->
+        <div class="footer-col">
+          <h4>Quick links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Shop</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Legal -->
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms and Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Social -->
+        <div class="footer-col">
+          <h4>Follow us</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook" title="Facebook">Fb</a>
+            <a href="#" aria-label="LinkedIn" title="LinkedIn">Li</a>
+            <a href="#" aria-label="Instagram" title="Instagram">Ig</a>
+            <a href="#" aria-label="TikTok" title="TikTok">Tk</a>
+            <a href="#" aria-label="YouTube" title="YouTube">Yt</a>
+            <a href="#" aria-label="X (Twitter)" title="X">X</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bar">
+        <div>&copy; 2026 Mardysev Solar Limited. All rights reserved.</div>
+        <div style="color: rgba(250, 248, 244, 0.4);">Engineered for Reliability & Sustainable Power</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ==========================================================
+         MOBILE NAVIGATION TOGGLE
+         ========================================================== */
+      var navToggle = document.querySelector('.nav-toggle');
+      var navMenu = document.querySelector('.nav-links');
+      var navLinks = document.querySelectorAll('.nav-links a');
+
+      function closeMobileMenu() {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      navToggle.addEventListener('click', function () {
+        var isOpen = navMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close menu when a nav link is clicked (mobile)
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      // Close menu on Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+          closeMobileMenu();
+          navToggle.focus();
+        }
+      });
+
+
+      /* ==========================================================
+         ACTIVE NAV LINK HIGHLIGHT & HEADER SCROLL EFFECT
+         ========================================================== */
+      var header = document.querySelector('.site-header');
+      var sections = document.querySelectorAll('section[id], .partners-section[id], .cta-final[id], .site-footer[id]');
+
+      function handleScroll() {
+        var scrollPos = window.scrollY;
+
+        // Header shadow/background enhancement on scroll
+        if (scrollPos > 30) {
+          header.style.backgroundColor = 'rgba(10, 20, 17, 0.95)';
+          header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+        } else {
+          header.style.backgroundColor = 'rgba(10, 20, 17, 0.88)';
+          header.style.boxShadow = 'none';
+        }
+
+        // Active link tracking
+        var currentId = '';
+        sections.forEach(function (section) {
+          if (section.offsetTop <= scrollPos + 160) {
+            currentId = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(function (link) {
+          var href = link.getAttribute('href');
+          link.classList.remove('active');
+
+          if (currentId === '' && (href === '#' || href === '#/')) {
+            link.classList.add('active');
+          } else if (href === '#' + currentId) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+    })();
+
+
+    /* ==========================================================
+       QUOTE FORM HANDLER
+       ========================================================== */
+    function handleQuoteForm(e) {
+      e.preventDefault();
+      var feedback = document.getElementById('quote-form-feedback');
+      feedback.style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+
+</body>
+</html>
