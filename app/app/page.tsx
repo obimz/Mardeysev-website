@@ -1,7 +1,9 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import Navbar from "./components/Navbar";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa6";
 import {
   MdOutlineCalendarMonth,
@@ -124,31 +126,56 @@ const fadeUp = {
   show: { opacity: 1, y: 0 },
 };
 
+function CountUpNumber({ value }: { value: string }) {
+  const [displayValue, setDisplayValue] = useState(value);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !hasAnimated) {
+        setHasAnimated(true);
+
+        // Extract the numeric part
+        const numStr = value.replace(/[^0-9.]/g, "");
+        const num = parseFloat(numStr);
+        const suffix = value.replace(/[0-9.]/g, "");
+
+        // Animate from 0 to the target number
+        let current = 0;
+        const increment = num / 60; // 60 frames for smooth animation
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= num) {
+            setDisplayValue(num.toString() + suffix);
+            clearInterval(timer);
+          } else {
+            // Format based on whether it's decimal or integer
+            const formatted = num % 1 !== 0
+              ? current.toFixed(1)
+              : Math.floor(current).toString();
+            setDisplayValue(formatted + suffix);
+          }
+        }, 16); // ~60fps
+
+        observer.unobserve(entry.target);
+      }
+    }, { threshold: 0.5 });
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [value, hasAnimated]);
+
+  return <div ref={ref}>{displayValue}</div>;
+}
+
 export default function Home() {
   return (
     <main className="site-shell">
-      <header className="topbar">
-        <div className="container topbar-inner">
-          <a href="#" className="brand" aria-label="Mardysev Solar Limited home">
-            <Image src="/images/mardeysev-logo 1.png" alt="Mardysev Solar Limited" width={40} height={40} />
-            <span>Mardysev Solar Limited</span>
-          </a>
-
-          <nav className="nav" aria-label="Main navigation">
-            <a href="#">Home</a>
-            <a href="/about">About</a>
-            <a href="/services">Services</a>
-            <a href="/projects">Projects</a>
-            <a href="/blog">Blog</a>
-            <a href="/contact">Contact</a>
-          </nav>
-
-          <a href="#contact" className="button button-primary">
-            Get a free quote
-          </a>
-        </div>
-      </header>
-
+      <Navbar />
       <section className="hero section-shell">
         <Image
           src="/images/solarspace2.jpg"
@@ -177,8 +204,8 @@ export default function Home() {
               businesses and institutions across Nigeria.
             </p>
             <div className="hero-actions">
-              <a href="#contact" className="button button-primary">
-                Get a free assessment
+              <a href="#services" className="button button-primary">
+                Learn more
               </a>
               <a href="#projects" className="button button-secondary">
                 See our work
@@ -241,12 +268,35 @@ export default function Home() {
         <div className="container about-grid">
           <div className="about-visual">
             <div className="visual-card">
-              <div className="visual-grid" aria-hidden="true" />
-              <div className="visual-illustration" aria-hidden="true">
-                <span className="grid-square" />
-                <span className="grid-square" />
-                <span className="grid-square" />
-                <span className="grid-square" />
+              <div className="visual-images-grid">
+                <Image
+                  src="/images/home-p/image1-home.jpg"
+                  alt="Solar installation 1"
+                  width={280}
+                  height={280}
+                  style={{ borderRadius: "12px", objectFit: "cover" }}
+                />
+                <Image
+                  src="/images/home-p/image2-home.jpg"
+                  alt="Solar installation 2"
+                  width={280}
+                  height={280}
+                  style={{ borderRadius: "12px", objectFit: "cover" }}
+                />
+                <Image
+                  src="/images/home-p/image3-p.jpg"
+                  alt="Solar installation 3"
+                  width={280}
+                  height={280}
+                  style={{ borderRadius: "12px", objectFit: "cover" }}
+                />
+                <Image
+                  src="/images/home-p/image5-p (2).jpg"
+                  alt="Solar installation 4 - Nigeria Energy Standards"
+                  width={280}
+                  height={280}
+                  style={{ borderRadius: "12px", objectFit: "cover" }}
+                />
               </div>
               <div className="floating-badge">
                 <span className="floating-check">✓</span>
@@ -268,12 +318,12 @@ export default function Home() {
             </p>
             <p>
               From initial feasibility checks and technical strategy to installation oversight and
-              after-sales support, our team creates energy solutions tailored to every client’s
+              after-sales support, our team creates energy solutions tailored to every client&apos;s
               unique power needs and sustainability goals.
             </p>
             <div className="cert-pill">
               <PiCertificate style={{ fontSize: '1.2rem', marginRight: '0.5rem', verticalAlign: 'middle' }} />
-              Certified Company
+              <span>Certified Company</span>
             </div>
             <a href="#contact" className="text-link">
               Learn more about us →
@@ -289,7 +339,7 @@ export default function Home() {
               <div style={{ fontSize: '1.8rem', color: 'var(--gold)', marginBottom: '0.5rem' }}>
                 {item.icon}
               </div>
-              <strong>{item.value}</strong>
+              <strong><CountUpNumber value={item.value} /></strong>
               <span>{item.label}</span>
             </div>
           ))}
@@ -358,24 +408,39 @@ export default function Home() {
           </div>
         </div>
         <div className="partner-rail" aria-label="Partner logos">
-          {Array.from({ length: 2 }).map((_, rowIndex) => (
-            <div key={rowIndex} className="partner-track">
-              {[
-                "Partner 1",
-                "Partner 2",
-                "Partner 3",
-                "Partner 4",
-                "Partner 5",
-                "Partner 6",
-                "Partner 7",
-                "Partner 8",
-              ].map((partner) => (
-                <span key={`${rowIndex}-${partner}`} className="partner-logo">
-                  {partner}
-                </span>
-              ))}
-            </div>
-          ))}
+          <div className="partner-track">
+            {[
+              "/images/partners/partner1.png",
+              "/images/partners/partner2.png",
+              "/images/partners/Chair-centre.jpeg-150x150.jpg",
+              "/images/partners/micmar.jpeg-150x150.jpg",
+              "/images/partners/p3.png",
+              "/images/partners/RAPID-1-1-150x150.png",
+              "/images/partners/RAPID-4-150x150.png",
+              "/images/partners/Happy-150x150.png",
+              "/images/partners/hq720-150x150.jpg",
+              "/images/partners/IMG-20260207-WA0012.jpg-3-150x150.jpeg",
+              "/images/partners/White-and-Black-Modern-Handwritten-Signature-Brand-Logo-150x150.png",
+              "/images/partners/White-and-Black-Modern-Handwritten-Signature-Brand-Logo-1-150x150.png",
+              "/images/partners/Rivy-150x150.png",
+              "/images/partners/Sahara-1-150x150.png",
+              "/images/partners/Unique-J-150x150.png",
+              "/images/partners/Adenola-150x150.png",
+              "/images/partners/Avondale.jpeg-150x150.jpg",
+              "/images/partners/Medplus.jpeg-150x150.jpg",
+              "/images/partners/p5.png",
+            ].map((src, index) => (
+              <Image
+                key={index}
+                src={src}
+                alt={`Partner ${index + 1}`}
+                width={140}
+                height={70}
+                className="partner-logo"
+                style={{ objectFit: "contain", objectPosition: "center" }}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -384,7 +449,7 @@ export default function Home() {
           <div className="section-heading center light">
             <div className="section-tag light">Client Stories</div>
             <h2>What our clients say</h2>
-            <p>Real experiences from homes and businesses we’ve powered.</p>
+            <p>Real experiences from homes and businesses we&apos;ve powered.</p>
           </div>
 
           <div className="testimonials-grid">
@@ -393,9 +458,9 @@ export default function Home() {
                 <div className="stars" aria-label="Five star review">
                   ★★★★★
                 </div>
-                <p>“{item.quote}”</p>
+                <p>&quot;{item.quote}&quot;</p>
                 <cite>
-                  — {item.name} <span>· {item.location}</span>
+                  - {item.name} <span>· {item.location}</span>
                 </cite>
               </blockquote>
             ))}
@@ -406,10 +471,10 @@ export default function Home() {
       <section id="contact" className="cta-section">
         <div className="container cta-grid">
           <div className="cta-copy">
-            <div className="section-tag light">Let’s Connect</div>
+            <div className="section-tag light">Let&apos;s Connect</div>
             <h2>About Your Next Project. Get In Touch</h2>
             <p>
-              Tell us about your property and power needs. We’ll recommend the right solar
+              Tell us about your property and power needs. We&apos;ll recommend the right solar
               solution for your home or business with honest, expert guidance.
             </p>
             <a href="mailto:info@mardysevgr.com" className="button button-primary">

@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import Navbar from "../components/Navbar";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa6";
 import {
   HiOutlineClipboardDocumentCheck,
@@ -64,22 +64,7 @@ export const metadata = { title: "Services | Mardysev Solar Limited" };
 export default function ServicesPage() {
   return (
     <main className="site-shell">
-      <header className="topbar">
-        <div className="container topbar-inner">
-          <Link href="/" className="brand">
-            <Image src="/images/mardeysev-logo 1.png" alt="Mardysev Solar Limited" width={40} height={40} />
-            Mardysev Solar Limited
-          </Link>
-          <nav className="nav" aria-label="Main navigation">
-            <Link href="/">Home</Link>
-            <a href="/about">About</a>
-            <a href="/services">Services</a>
-            <a href="/projects">Projects</a>
-            <a href="/contact">Contact</a>
-          </nav>
-          <a href="/contact" className="button button-primary">Get a free quote</a>
-        </div>
-      </header>
+      <Navbar />
 
       <section className="hero section-shell">
         <div className="container hero-copy">

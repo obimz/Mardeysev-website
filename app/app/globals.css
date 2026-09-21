@@ -59,12 +59,38 @@ button, input, textarea {
 }
 
 .topbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 40;
-  background: rgba(10, 20, 17, 0.95);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.topbar .brand,
+.topbar .nav a {
+  color: #f7f1e8;
+  transition: color 0.3s ease;
+}
+
+.topbar .nav a:hover {
+  color: var(--gold);
+}
+
+.topbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar.scrolled .brand,
+.topbar.scrolled .nav a {
+  color: #0e1311;
+}
+
+.topbar.scrolled .nav a:hover {
+  color: var(--gold);
 }
 
 .topbar-inner {
@@ -80,7 +106,7 @@ button, input, textarea {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
-  color: #f7f1e8;
+  color: #0e1311;
   font-size: 1.2rem;
   font-weight: 700;
 }
@@ -110,14 +136,14 @@ button, input, textarea {
 }
 
 .nav a {
-  color: rgba(247, 241, 232, 0.85);
+  color: rgba(14, 19, 17, 0.72);
   font-size: 0.95rem;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .nav a:hover {
-  color: #fff;
+  color: #0e1311;
 }
 
 .button {
@@ -159,7 +185,7 @@ button, input, textarea {
 
 .hero {
   position: relative;
-  min-height: calc(100vh - 72px);
+  min-height: 100vh;
   background: #0a1411;
   color: #f7f1e8;
   overflow: hidden;
@@ -193,9 +219,9 @@ button, input, textarea {
   position: relative;
   z-index: 3;
   display: flex;
-  align-items: flex-start;
-  min-height: calc(100vh - 72px);
-  padding-top: 2.5rem;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 4rem;
   padding-bottom: 3rem;
 }
 
@@ -271,6 +297,12 @@ button, input, textarea {
   border-radius: 16px;
   padding: 1.5rem;
   box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.trust-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .icon-wrap {
@@ -318,35 +350,23 @@ button, input, textarea {
   border-radius: 24px;
   overflow: hidden;
   border: 1px solid rgba(18, 32, 28, 0.08);
-  background: linear-gradient(135deg, #13241f, #0a1411);
+  background: #ffffff;
   box-shadow: var(--shadow);
 }
 
-.visual-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(245, 166, 35, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245, 166, 35, 0.08) 1px, transparent 1px);
-  background-size: 2.5rem 2.5rem;
-}
-
-.visual-illustration {
-  position: absolute;
-  inset: 0;
+.visual-images-grid {
   display: grid;
-  place-items: center;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  padding: 4rem;
+  gap: 1rem;
+  padding: 1.5rem;
+  height: 100%;
 }
 
-.grid-square {
+.visual-images-grid img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 12px;
-  border: 1px solid rgba(245, 166, 35, 0.28);
-  background: rgba(245, 166, 35, 0.06);
 }
 
 .floating-badge {
@@ -355,12 +375,44 @@ button, input, textarea {
   bottom: 1.3rem;
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  background: rgba(10, 20, 17, 0.86);
-  border: 1px solid rgba(245, 166, 35, 0.2);
-  border-radius: 12px;
-  padding: 0.75rem 1rem;
-  color: #f7f1e8;
+  gap: 0.4rem;
+  background: rgba(250, 248, 244, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 166, 35, 0.1);
+  border-radius: 10px;
+  padding: 0.45rem 0.65rem;
+  color: #0a1411;
+  font-size: 0.7rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.floating-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(245, 166, 35, 0.08);
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 0.75rem;
+}
+
+.floating-badge strong,
+.floating-badge small {
+  display: block;
+  line-height: 1.2;
+}
+
+.floating-badge strong {
+  color: #000000;
+  font-weight: 700;
+}
+
+.floating-badge small {
+  color: #000 !important;
+  font-size: 0.65rem;
+  font-weight: 600;
 }
 
 .floating-check {
@@ -439,17 +491,18 @@ button, input, textarea {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
-  background: #0a1411;
+  background: #faf8f4;
   border-radius: 20px;
   padding: 1.25rem;
-  box-shadow: 0 18px 40px rgba(10, 20, 17, 0.14);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .stat-box {
   padding: 1.6rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.02);
+  background: #ffffff;
 }
 
 .stat-box strong {
@@ -460,7 +513,7 @@ button, input, textarea {
 }
 
 .stat-box span {
-  color: rgba(247, 241, 232, 0.75);
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
@@ -485,7 +538,7 @@ button, input, textarea {
 }
 
 .section-heading.light p {
-  color: rgba(247, 241, 232, 0.75);
+  color: var(--muted);
 }
 
 .service-grid {
@@ -608,21 +661,18 @@ button, input, textarea {
 }
 
 .partner-logo {
-  flex: 0 0 180px;
-  display: grid;
-  place-items: center;
-  height: 86px;
+  flex: 0 0 auto;
   margin: 0 1rem;
   border-radius: 12px;
   border: 1px solid var(--border);
   background: #fff;
-  color: rgba(14, 19, 17, 0.5);
-  font-weight: 700;
+  overflow: hidden;
+  display: block;
 }
 
 .testimonials-shell {
-  background: #0a1411;
-  color: #f7f1e8;
+  background: #faf8f4;
+  color: #0e1311;
 }
 
 .testimonials-grid {
@@ -632,10 +682,11 @@ button, input, textarea {
 }
 
 .testimonial-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 1.7rem;
+  box-shadow: var(--shadow);
 }
 
 .stars {
@@ -646,26 +697,25 @@ button, input, textarea {
 }
 
 .testimonial-card p {
-  color: rgba(247, 241, 232, 0.82);
+  color: var(--muted);
   font-size: 1rem;
   margin-bottom: 1rem;
 }
 
 .testimonial-card cite {
-  color: var(--gold);
+  color: var(--deep-2);
   font-style: normal;
   font-weight: 700;
 }
 
 .testimonial-card cite span {
-  color: rgba(247, 241, 232, 0.66);
+  color: var(--muted);
   font-weight: 500;
 }
 
 .cta-section {
-  background: radial-gradient(circle at 10% 20%, rgba(33, 91, 71, 0.5), transparent 30%),
-    linear-gradient(135deg, #1b2d27 0%, #0f1a16 100%);
-  color: #f7f1e8;
+  background: linear-gradient(135deg, #faf8f4 0%, #f7f1e8 100%);
+  color: #0e1311;
   padding: 5.5rem 0;
 }
 
@@ -677,29 +727,30 @@ button, input, textarea {
 }
 
 .cta-copy h2 {
-  color: #f7f1e8;
+  color: #0e1311;
   margin-bottom: 1rem;
   font-size: clamp(2.2rem, 3vw, 3.2rem);
 }
 
 .cta-copy p {
-  color: rgba(247, 241, 232, 0.8);
+  color: var(--muted);
   margin-bottom: 1.5rem;
 }
 
 .quote-form {
-  background: rgba(10, 20, 17, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 1.6rem;
   display: grid;
   gap: 1rem;
+  box-shadow: var(--shadow);
 }
 
 .quote-form label {
   display: grid;
   gap: 0.45rem;
-  color: rgba(247, 241, 232, 0.8);
+  color: #0e1311;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -708,9 +759,9 @@ button, input, textarea {
 .quote-form input,
 .quote-form textarea {
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.04);
-  color: #fff;
+  border: 1px solid var(--border);
+  background: #faf8f4;
+  color: #0e1311;
   border-radius: 10px;
   padding: 0.85rem 1rem;
   resize: vertical;
@@ -718,13 +769,14 @@ button, input, textarea {
 
 .quote-form input::placeholder,
 .quote-form textarea::placeholder {
-  color: rgba(247, 241, 232, 0.38);
+  color: var(--muted);
 }
 
 .site-footer {
-  background: #0a1411;
-  color: rgba(247, 241, 232, 0.7);
+  background: #ffffff;
+  color: var(--muted);
   padding: 4rem 0 2rem;
+  border-top: 1px solid var(--border);
 }
 
 .footer-grid {
@@ -735,14 +787,14 @@ button, input, textarea {
 
 .site-footer h3,
 .site-footer h4 {
-  color: #f7f1e8;
+  color: #0e1311;
   margin-bottom: 1rem;
 }
 
 .site-footer p,
 .site-footer li,
 .site-footer a {
-  color: rgba(247, 241, 232, 0.72);
+  color: var(--muted);
 }
 
 .site-footer ul {
@@ -765,10 +817,17 @@ button, input, textarea {
   display: grid;
   place-items: center;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  background: #faf8f4;
+  color: var(--deep-2);
   font-size: 0.75rem;
   font-weight: 700;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.social-links a:hover {
+  background: var(--gold);
+  color: #0a1411;
 }
 
 .footer-bottom {
@@ -778,8 +837,8 @@ button, input, textarea {
   align-items: center;
   padding-top: 1.5rem;
   margin-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(247, 241, 232, 0.52);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
   font-size: 0.8rem;
 }
 

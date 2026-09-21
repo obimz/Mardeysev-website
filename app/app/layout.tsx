@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Mardysev Solar Limited | Clean Energy Solutions",
   description:
     "Clean energy consulting, solar installation and reliable power solutions for homes and businesses across Nigeria.",
+  icons: {
+    icon: "/images/favicon-image.jpg",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

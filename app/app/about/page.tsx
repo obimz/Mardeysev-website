@@ -1,6 +1,7 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa6";
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "../components/Navbar";
 import {
   HiOutlineShieldCheck,
   HiOutlineRocketLaunch,
@@ -40,41 +41,54 @@ const coreValues = [
 export default function AboutPage() {
   return (
     <main className="site-shell">
-      <header className="topbar">
-        <div className="container topbar-inner">
-          <Link href="/" className="brand"><Image src="/images/mardeysev-logo 1.png" alt="Mardysev Solar Limited" width={40} height={40} />Mardysev Solar Limited</Link>
-          <nav className="nav" aria-label="Main navigation">
-            <Link href="/">Home</Link>
-            <a href="/about">About</a>
-            <a href="/services">Services</a>
-            <a href="/projects">Projects</a>
-            <a href="/blog">Blog</a>
-            <a href="/contact">Contact</a>
-          </nav>
-          <a href="/contact" className="button button-primary">Get a free quote</a>
-        </div>
-      </header>
+      <Navbar />
 
-      <section className="hero section-shell" style={{ background: '#1a2b3c', minHeight: 'auto', padding: '0' }}>
-        <div className="container" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
-          <h1 style={{ textAlign: 'center', color: '#ff4d4d', fontSize: '3.5rem', marginBottom: '3rem', fontWeight: '700', letterSpacing: '0.05em' }}>ABOUT US</h1>
-          <div className="about-grid" style={{ gap: '2rem', alignItems: 'start' }}>
-            <div style={{ position: 'relative', width: '100%', height: '450px', borderRadius: '12px', overflow: 'hidden' }}>
-              <Image
-                src="/images/about_4.jpg"
-                alt="Solar panel installations"
-                fill
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-            <div style={{ color: '#fff' }}>
-              <h2 style={{ fontSize: '1.8rem', marginBottom: '1.5rem', color: '#fff', fontWeight: '700' }}>MARDYSEV SOLAR LIMITED</h2>
-              <p style={{ marginBottom: '1.5rem', lineHeight: '1.8', color: 'rgba(255,255,255,0.9)' }}>
-                We are a leading solar energy consulting firm dedicated to accelerating the transition to clean, renewable energy. As global energy demands rise and the need for sustainable solutions becomes more urgent, we are committed to helping businesses, communities, and governments harness the power of the sun to create a brighter, more sustainable future.
-              </p>
-              <p style={{ lineHeight: '1.8', color: 'rgba(255,255,255,0.9)' }}>
-                At Mardysev, we specialize in providing expert guidance across all stages of solar energy projects, from initial feasibility assessments and system design to installation oversight and ongoing maintenance. Our team of experienced engineers, project managers, and energy experts works closely with clients to develop customized solar solutions that meet their unique energy needs and sustainability goals.
-              </p>
+      <section className="section-shell" style={{ background: '#ffffff', padding: '5rem 0' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', paddingLeft: '1rem', paddingRight: '1rem', paddingTop: '3rem', paddingBottom: '3rem' }}>
+          {/* Badge */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', border: '1px solid #e5e7eb', borderRadius: '999px', padding: '0.5rem 1rem', marginBottom: '1.5rem' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }}></div>
+            <span style={{ fontSize: '0.875rem', fontWeight: '500', color: '#374151' }}>About Us</span>
+          </div>
+
+          {/* Heading */}
+          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '700', color: '#111827', marginTop: '1.5rem', lineHeight: '1.2', letterSpacing: '-0.02em' }}>Powering Your Future with Solar</h1>
+
+          {/* Introductory Text */}
+          <div style={{ maxWidth: '48rem', margin: '1.5rem auto 0', textAlign: 'center' }}>
+            <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '1rem' }}>
+              We are a leading solar energy consulting firm dedicated to accelerating the transition to clean, renewable energy. As global energy demands rise and the need for sustainable solutions becomes more urgent, we are committed to helping businesses, communities, and governments harness the power of the sun to create a brighter, more sustainable future.
+            </p>
+            <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: '1.7' }}>
+              At Mardysev, we specialize in providing expert guidance across all stages of solar energy projects, from initial feasibility assessments and system design to installation oversight and ongoing maintenance. Our team of experienced engineers, project managers, and energy experts works closely with clients to develop customized solar solutions that meet their unique energy needs and sustainability goals.
+            </p>
+            <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: '1.7', marginTop: '1rem' }}>
+              Our Promise: Whether you&apos;re looking to reduce your carbon footprint, lower energy costs, or achieve energy independence, Mardysev is your trusted partner in solar energy innovation. Together, we can create a future powered by clean, affordable, and renewable energy.
+            </p>
+          </div>
+        </div>
+
+        {/* Banner with Features Grid */}
+        <div style={{ maxWidth: '80rem', width: '100%', height: '400px', margin: '2rem auto 0', position: 'relative', borderRadius: '2rem', overflow: 'hidden', paddingLeft: '1rem', paddingRight: '1rem' }}>
+          {/* Background Image */}
+          <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+            <Image
+              src="/images/about_4.jpg"
+              alt="Solar panel installations"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+            {/* Dark Overlay */}
+            <div style={{ position: 'absolute', inset: '0', background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(59, 130, 246, 0.4) 100%)' }}></div>
+
+            {/* Features Grid */}
+            <div style={{ position: 'absolute', inset: '0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', alignItems: 'center', zIndex: '10', padding: '2rem', gap: '2rem' }}>
+              {coreValues.map((value) => (
+                <div key={value.title} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', textAlign: 'center' }}>
+                  <div style={{ fontSize: '2.5rem', color: 'white' }}>{value.icon}</div>
+                  <p style={{ fontSize: '1rem', fontWeight: '500', color: 'white' }}>{value.title}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -130,7 +144,7 @@ export default function AboutPage() {
           </div>
           <div className="about-grid">
             <div className="about-copy">
-              <p>Real-time monitoring of all solutions including energy consumed, capacity utilization, system performance as well geo-spatial view of all locations. Modern and superior systems that can integrate seamlessly with multiple energy sources.</p>
+              <p>Real-time monitoring of all solutions including energy consumed, capacity utilization, system performance as well as geo-spatial view of all locations. Modern and superior systems that can integrate seamlessly with multiple energy sources.</p>
             </div>
             <div className="about-copy">
               <p>Reliable uptime resulting from strict adherence to maintenance and operational working requirements. Multiple partnerships with financing partners means we can structure a model that fits your financial strategy.</p>
