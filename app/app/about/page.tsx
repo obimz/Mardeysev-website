@@ -62,9 +62,6 @@ export default function AboutPage() {
             <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: '1.7' }}>
               At Mardysev, we specialize in providing expert guidance across all stages of solar energy projects, from initial feasibility assessments and system design to installation oversight and ongoing maintenance. Our team of experienced engineers, project managers, and energy experts works closely with clients to develop customized solar solutions that meet their unique energy needs and sustainability goals.
             </p>
-            <p style={{ color: '#4b5563', fontSize: '1.05rem', lineHeight: '1.7', marginTop: '1rem' }}>
-              Our Promise: Whether you&apos;re looking to reduce your carbon footprint, lower energy costs, or achieve energy independence, Mardysev is your trusted partner in solar energy innovation. Together, we can create a future powered by clean, affordable, and renewable energy.
-            </p>
           </div>
         </div>
 

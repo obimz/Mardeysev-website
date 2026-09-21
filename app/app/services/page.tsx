@@ -66,15 +66,7 @@ export default function ServicesPage() {
     <main className="site-shell">
       <Navbar />
 
-      <section className="hero section-shell">
-        <div className="container hero-copy">
-          <div className="eyebrow"><span className="eyebrow-dot" />Solutions & Services</div>
-          <h1>Power systems designed for continuity.</h1>
-          <p>From the first energy audit to years of system support, Mardysev brings one accountable team to every stage of your solar project.</p>
-        </div>
-      </section>
-
-      <section className="section-shell">
+      <section className="section-shell" style={{ paddingTop: '8rem' }}>
         <div className="container">
           <div className="section-heading center">
             <div className="section-tag">What we do</div>

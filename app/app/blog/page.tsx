@@ -83,15 +83,7 @@ export default function BlogPage() {
     <main className="site-shell">
       <Navbar />
 
-      <section className="hero section-shell">
-        <div className="container hero-copy">
-          <div className="eyebrow"><span className="eyebrow-dot" />Blog & Insights</div>
-          <h1>Solar Energy Knowledge Hub</h1>
-          <p>Expert advice, installation guides, and insights about solar energy solutions in Nigeria.</p>
-        </div>
-      </section>
-
-      <section className="section-shell">
+      <section className="section-shell" style={{ paddingTop: '8rem' }}>
         <div className="container">
           <div className="section-heading center">
             <div className="section-tag">Latest Articles</div>
