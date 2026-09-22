@@ -506,18 +506,16 @@ export default function Home() {
         <div className="container footer-grid">
           <div>
             <h3>Mardysev Solar Limited</h3>
-            <p>
-              Lagos Office: 11 Bassie Ogamba Street, off Adeniran Ogunsanya Street, Surulere,
-              Lagos
+            <p style={{ marginBottom: '1.5rem', lineHeight: '1.8' }}>
+              <strong>Lagos Office</strong><br />
+              11 Bassie Ogamba Street,<br />
+              off Adeniran Ogunsanya Street,<br />
+              Surulere, Lagos
             </p>
-            <p>
-              Enugu Office: Arizona House, No. 4 Old Abakiliki Road, Thinkers Corner, Emene,
-              Enugu State
-            </p>
-            <p>
+            <p style={{ lineHeight: '1.8' }}>
               Email: <a href="mailto:info@mardysevgr.com">info@mardysevgr.com</a>
             </p>
-            <p>
+            <p style={{ marginTop: '1rem', lineHeight: '1.8' }}>
               Phone: <a href="tel:+2347030345373">+234 703 034 5373</a>
             </p>
           </div>
