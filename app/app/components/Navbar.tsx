@@ -54,6 +54,7 @@ export default function Navbar() {
           <Link href="/services">Services</Link>
           <Link href="/projects">Projects</Link>
           <Link href="/blog">Blog</Link>
+          <Link href="/contact">Contact</Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -79,6 +80,7 @@ export default function Navbar() {
           <Link href="/services" onClick={closeMobileMenu}>Services</Link>
           <Link href="/projects" onClick={closeMobileMenu}>Projects</Link>
           <Link href="/blog" onClick={closeMobileMenu}>Blog</Link>
+          <Link href="/contact" onClick={closeMobileMenu}>Contact</Link>
         </nav>
       )}
     </header>

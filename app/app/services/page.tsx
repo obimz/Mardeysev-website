@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Navbar from "../components/Navbar";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaTiktok } from "react-icons/fa6";
 import {
   HiOutlineClipboardDocumentCheck,
   HiOutlineLightBulb,
@@ -180,12 +180,10 @@ export default function ServicesPage() {
               Surulere, Lagos
             </p>
             <p style={{ lineHeight: '1.8' }}>
-              Email: <a href="mailto:info@mardysevgr.com">info@mardysevgr.com</a>,{' '}
-              <a href="mailto:sales@mardysevgr.com">sales@mardysevgr.com</a>
+              Email: <a href="mailto:info@mardysevgr.com">info@mardysevgr.com</a>
             </p>
             <p style={{ marginTop: '1rem', lineHeight: '1.8' }}>
-              Phone: <a href="tel:+2347030345373">+234 703 034 5373</a>,{' '}
-              <a href="tel:+2349031311091">+234 903 131 1091</a>
+              Phone: <a href="tel:+2347030345373">+234 703 034 5373</a>
             </p>
           </div>
 
@@ -196,6 +194,7 @@ export default function ServicesPage() {
               <li><a href="/about">About</a></li>
               <li><a href="/services">Services</a></li>
               <li><a href="/projects">Projects</a></li>
+              <li><a href="/blog">Blog</a></li>
               <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
@@ -203,8 +202,8 @@ export default function ServicesPage() {
           <div>
             <h4>Company</h4>
             <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms & Conditions</a></li>
+              <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+              <li><Link href="/tos">Terms &amp; Conditions</Link></li>
               <li><a href="#">FAQ</a></li>
             </ul>
           </div>
@@ -212,17 +211,20 @@ export default function ServicesPage() {
           <div>
             <h4>Follow Us</h4>
             <div className="social-links">
-              <a href="#" aria-label="Mardysev Solar on Facebook" title="Facebook">
+              <a href="https://web.facebook.com/profile.php?id=61562569504710" aria-label="Mardysev Solar on Facebook" title="Facebook">
                 <FaFacebookF aria-hidden="true" />
               </a>
-              <a href="#" aria-label="Mardysev Solar on LinkedIn" title="LinkedIn">
+              <a href="https://www.linkedin.com/company/mardysev-solar/" aria-label="Mardysev Solar on LinkedIn" title="LinkedIn">
                 <FaLinkedinIn aria-hidden="true" />
               </a>
-              <a href="#" aria-label="Mardysev Solar on Instagram" title="Instagram">
+              <a href="https://www.instagram.com/mardysev_solar?igsh=MmViczRpaDBjZjVr" aria-label="Mardysev Solar on Instagram" title="Instagram">
                 <FaInstagram aria-hidden="true" />
               </a>
-              <a href="#" aria-label="Mardysev Solar on YouTube" title="YouTube">
+              <a href="https://www.youtube.com/@Mardysevsolarlimited" aria-label="Mardysev Solar on YouTube" title="YouTube">
                 <FaYoutube aria-hidden="true" />
+              </a>
+              <a href="https://www.tiktok.com/@mardysevsolarsolu?_t=ZM-8xWwN1vCHjB&_r=1" aria-label="Mardysev Solar on TikTok" title="TikTok">
+                <FaTiktok aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -230,7 +232,7 @@ export default function ServicesPage() {
 
         <div className="container footer-bottom">
           <span>© 2026 Mardysev Solar Limited</span>
-          <span>Powering the Future with Clean Affordable and Reliable Energy</span>
+          <span>Engineered for Reliability & Sustainable Power</span>
         </div>
       </footer>
     </main>

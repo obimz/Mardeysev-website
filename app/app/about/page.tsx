@@ -1,4 +1,4 @@
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaTiktok } from "react-icons/fa6";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
@@ -194,8 +194,8 @@ export default function AboutPage() {
           <div>
             <h4>Company</h4>
             <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms & Conditions</a></li>
+              <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+              <li><Link href="/tos">Terms &amp; Conditions</Link></li>
               <li><a href="#">FAQ</a></li>
             </ul>
           </div>
@@ -203,17 +203,20 @@ export default function AboutPage() {
           <div>
             <h4>Follow Us</h4>
             <div className="social-links">
-              <a href="#" aria-label="Mardysev Solar on Facebook" title="Facebook">
+              <a href="https://web.facebook.com/profile.php?id=61562569504710" aria-label="Mardysev Solar on Facebook" title="Facebook">
                 <FaFacebookF aria-hidden="true" />
               </a>
-              <a href="#" aria-label="Mardysev Solar on LinkedIn" title="LinkedIn">
+              <a href="https://www.linkedin.com/company/mardysev-solar/" aria-label="Mardysev Solar on LinkedIn" title="LinkedIn">
                 <FaLinkedinIn aria-hidden="true" />
               </a>
-              <a href="#" aria-label="Mardysev Solar on Instagram" title="Instagram">
+              <a href="https://www.instagram.com/mardysev_solar?igsh=MmViczRpaDBjZjVr" aria-label="Mardysev Solar on Instagram" title="Instagram">
                 <FaInstagram aria-hidden="true" />
               </a>
-              <a href="#" aria-label="Mardysev Solar on YouTube" title="YouTube">
+              <a href="https://www.youtube.com/@Mardysevsolarlimited" aria-label="Mardysev Solar on YouTube" title="YouTube">
                 <FaYoutube aria-hidden="true" />
+              </a>
+              <a href="https://www.tiktok.com/@mardysevsolarsolu?_t=ZM-8xWwN1vCHjB&_r=1" aria-label="Mardysev Solar on TikTok" title="TikTok">
+                <FaTiktok aria-hidden="true" />
               </a>
             </div>
           </div>

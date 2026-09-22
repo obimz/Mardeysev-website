@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Navbar from "./components/Navbar";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaTiktok } from "react-icons/fa6";
 import {
   MdOutlineCalendarMonth,
   MdOutlineBolt,
@@ -204,7 +205,7 @@ export default function Home() {
               businesses and institutions across Nigeria.
             </p>
             <div className="hero-actions">
-              <a href="#services" className="button button-primary">
+              <a href="/about" className="button button-primary">
                 Learn more
               </a>
               <a href="#projects" className="button button-secondary">
@@ -523,19 +524,20 @@ export default function Home() {
           <div>
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/about">About</Link></li>
+              <li><Link href="/services">Services</Link></li>
+              <li><Link href="/projects">Projects</Link></li>
+              <li><Link href="/blog">Blog</Link></li>
+              <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
 
           <div>
             <h4>Company</h4>
             <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms & Conditions</a></li>
+              <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+              <li><Link href="/tos">Terms &amp; Conditions</Link></li>
               <li><a href="#">FAQ</a></li>
             </ul>
           </div>
@@ -543,17 +545,20 @@ export default function Home() {
           <div>
             <h4>Follow Us</h4>
             <div className="social-links">
-              <a href="#" aria-label="Mardysev Solar on Facebook" title="Facebook">
+              <a href="https://web.facebook.com/profile.php?id=61562569504710" aria-label="Mardysev Solar on Facebook" title="Facebook">
                 <FaFacebookF aria-hidden="true" />
               </a>
-              <a href="#" aria-label="Mardysev Solar on LinkedIn" title="LinkedIn">
+              <a href="https://www.linkedin.com/company/mardysev-solar/" aria-label="Mardysev Solar on LinkedIn" title="LinkedIn">
                 <FaLinkedinIn aria-hidden="true" />
               </a>
-              <a href="#" aria-label="Mardysev Solar on Instagram" title="Instagram">
+              <a href="https://www.instagram.com/mardysev_solar?igsh=MmViczRpaDBjZjVr" aria-label="Mardysev Solar on Instagram" title="Instagram">
                 <FaInstagram aria-hidden="true" />
               </a>
-              <a href="#" aria-label="Mardysev Solar on YouTube" title="YouTube">
+              <a href="https://www.youtube.com/@Mardysevsolarlimited" aria-label="Mardysev Solar on YouTube" title="YouTube">
                 <FaYoutube aria-hidden="true" />
+              </a>
+              <a href="https://www.tiktok.com/@mardysevsolarsolu?_t=ZM-8xWwN1vCHjB&_r=1" aria-label="Mardysev Solar on TikTok" title="TikTok">
+                <FaTiktok aria-hidden="true" />
               </a>
             </div>
           </div>

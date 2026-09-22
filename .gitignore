@@ -36,3 +36,5 @@ app/.claude/
 # Generated agent metadata from local dev tooling
 app/AGENTS.md
 app/CLAUDE.md
+.agents/
+skills-lock.json
