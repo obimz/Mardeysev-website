@@ -294,7 +294,7 @@ export default function Contact() {
               <li><a href="/about">About</a></li>
               <li><a href="/services">Services</a></li>
               <li><a href="/projects">Projects</a></li>
-              <li><a href="/blog">Blog</a></li>
+              <li><Link href="/blog">Blog</Link></li>
               <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
