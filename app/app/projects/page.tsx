@@ -93,7 +93,7 @@ export default function ProjectsPage() {
             <ul>
               <li><Link href="/privacy-policy">Privacy Policy</Link></li>
               <li><Link href="/tos">Terms &amp; Conditions</Link></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="/services#faq">FAQ</a></li>
             </ul>
           </div>
 

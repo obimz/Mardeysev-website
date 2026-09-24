@@ -140,7 +140,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="section-shell" style={{ background: 'var(--paper)' }}>
+      <section id="faq" className="section-shell" style={{ background: 'var(--paper)' }}>
         <div className="container">
           <div className="section-heading center">
             <div className="section-tag">F.A.Q.</div>
@@ -204,7 +204,7 @@ export default function ServicesPage() {
             <ul>
               <li><Link href="/privacy-policy">Privacy Policy</Link></li>
               <li><Link href="/tos">Terms &amp; Conditions</Link></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="/services#faq">FAQ</a></li>
             </ul>
           </div>
 

@@ -78,7 +78,14 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
     mainImage {
       asset,
       "alt": coalesce(alt, title)
-    }
+    },
+    author-> {
+      name,
+      "avatar": image.asset->url
+    },
+    "categories": categories[]->title,
+    featured,
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 200)
   }`;
 
   try {
@@ -104,7 +111,14 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       asset,
       "alt": coalesce(alt, title)
     },
-    body
+    body,
+    author-> {
+      name,
+      "avatar": image.asset->url
+    },
+    "categories": categories[]->title,
+    featured,
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 200)
   }`;
 
   try {
@@ -129,7 +143,14 @@ export async function getFeaturedPosts(): Promise<BlogPost[]> {
     mainImage {
       asset,
       "alt": coalesce(alt, title)
-    }
+    },
+    author-> {
+      name,
+      "avatar": image.asset->url
+    },
+    "categories": categories[]->title,
+    featured,
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 200)
   }`;
 
   try {
@@ -137,6 +158,23 @@ export async function getFeaturedPosts(): Promise<BlogPost[]> {
     return posts;
   } catch (error) {
     console.error('Error fetching featured posts:', error);
+    return [];
+  }
+}
+
+/**
+ * Get all unique categories from posts
+ */
+export async function getAllCategories(): Promise<string[]> {
+  const query = `*[_type == "category"] | order(title asc) {
+    title
+  }`;
+
+  try {
+    const categories = await client.fetch<Array<{ title: string }>>(query);
+    return categories.map((cat) => cat.title);
+  } catch (error) {
+    console.error('Error fetching categories:', error);
     return [];
   }
 }

@@ -83,16 +83,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </p>
 
           {/* Featured Image */}
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-12 shadow-[var(--shadow)]">
-            <Image
-              src={urlFor(post.mainImage.asset).width(1600).height(900).url()}
-              alt={post.mainImage.alt || post.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1000px) 100vw, 1000px"
-              priority
-            />
-          </div>
+          {post.mainImage?.asset ? (
+            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-12 shadow-[var(--shadow)]">
+              <Image
+                src={urlFor(post.mainImage.asset).width(1600).height(900).url()}
+                alt={post.mainImage.alt || post.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1000px) 100vw, 1000px"
+                priority
+              />
+            </div>
+          ) : (
+            <div className="aspect-[16/9] rounded-2xl mb-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 flex items-center justify-center">
+              <div className="text-center text-white p-8">
+                <svg className="w-20 h-20 mx-auto mb-4 opacity-30" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                </svg>
+                <p className="text-lg font-semibold opacity-70">Mardysev Solar Blog</p>
+              </div>
+            </div>
+          )}
 
           {/* Article Body with Tailwind Typography */}
           <div className="prose prose-lg mx-auto max-w-none">
@@ -193,7 +204,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <ul>
               <li><Link href="/privacy-policy">Privacy Policy</Link></li>
               <li><Link href="/tos">Terms &amp; Conditions</Link></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="/services#faq">FAQ</a></li>
             </ul>
           </div>
 

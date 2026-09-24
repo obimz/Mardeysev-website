@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -174,6 +174,28 @@ function CountUpNumber({ value }: { value: string }) {
 }
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("Thank you for your message! We'll get back to you within 24 hours.");
+    setFormData({ name: "", email: "", phone: "", message: "" });
+    setTimeout(() => setStatus(""), 5000);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <main className="site-shell">
       <Navbar />
@@ -483,22 +505,27 @@ export default function Home() {
             </a>
           </div>
 
-          <form className="quote-form">
+          <form className="quote-form" onSubmit={handleSubmit}>
             <label>
               Name
-              <input type="text" placeholder="Your full name" />
+              <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your full name" required />
             </label>
             <label>
               Email
-              <input type="email" placeholder="you@example.com" />
+              <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="you@example.com" required />
+            </label>
+            <label>
+              Phone
+              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Your phone number" />
             </label>
             <label>
               Message
-              <textarea placeholder="Tell us about your property and power needs..." />
+              <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your property and power needs..." required />
             </label>
             <button type="submit" className="button button-primary full-width">
               Send message
             </button>
+            {status && <p style={{ color: "white", marginTop: "1rem" }}>{status}</p>}
           </form>
         </div>
       </section>
@@ -527,7 +554,6 @@ export default function Home() {
               <li><Link href="/">Home</Link></li>
               <li><Link href="/about">About</Link></li>
               <li><Link href="/services">Services</Link></li>
-              <li><Link href="/projects">Projects</Link></li>
               <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
@@ -538,7 +564,7 @@ export default function Home() {
             <ul>
               <li><Link href="/privacy-policy">Privacy Policy</Link></li>
               <li><Link href="/tos">Terms &amp; Conditions</Link></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="/services#faq">FAQ</a></li>
             </ul>
           </div>
 

@@ -37,14 +37,27 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="section-shell" style={{ background: "var(--bg)", paddingTop: "8rem", paddingBottom: "4rem" }}>
         <div className="container" style={{ textAlign: "center", maxWidth: "48rem", margin: "0 auto" }}>
-          <div className="eyebrow" style={{ justifyContent: "center", marginBottom: "1.5rem" }}>
-            <span className="eyebrow-dot" />
+          <div className="eyebrow light" style={{ justifyContent: "center", marginBottom: "1.5rem" }}>
+            <span className="relative flex h-2.5 w-2.5 items-center justify-center">
+              <span
+                className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-90"
+                style={{
+                  boxShadow: "0 0 12px rgba(245, 166, 35, 0.8)",
+                }}
+              />
+              <span
+                className="relative inline-flex h-2 w-2 rounded-full bg-amber-400"
+                style={{
+                  boxShadow: "0 0 10px #f5a623, 0 0 20px rgba(245, 166, 35, 0.9), 0 0 30px rgba(245, 166, 35, 0.6)",
+                }}
+              />
+            </span>
             Get In Touch
           </div>
-          <h1 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: "700", color: "var(--near-black)", marginBottom: "1.5rem", lineHeight: "1.2" }}>
+          <h1 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: "700", color: "var(--ink)", marginBottom: "1.5rem", lineHeight: "1.2" }}>
             Let&apos;s Power Your Future
           </h1>
-          <p style={{ fontSize: "1.125rem", lineHeight: "1.7", color: "var(--text-muted)", maxWidth: "42rem", margin: "0 auto" }}>
+          <p style={{ fontSize: "1.125rem", lineHeight: "1.7", color: "var(--muted)", maxWidth: "42rem", margin: "0 auto" }}>
             Whether you need a free energy audit, want to discuss a solar project, or have questions about our services, we&apos;re here to help.
           </p>
         </div>
@@ -53,20 +66,20 @@ export default function Contact() {
       {/* Contact Form + Info Grid */}
       <section className="section-shell" style={{ background: "var(--paper)" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "start" }}>
+          <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "start" }}>
 
             {/* Contact Form */}
             <div>
-              <h2 style={{ fontSize: "1.75rem", fontWeight: "700", color: "var(--near-black)", marginBottom: "1rem" }}>
+              <h2 style={{ fontSize: "1.75rem", fontWeight: "700", color: "var(--ink)", marginBottom: "1rem" }}>
                 Send Us a Message
               </h2>
-              <p style={{ fontSize: "1rem", color: "var(--text-muted)", marginBottom: "2rem", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "1rem", color: "var(--muted)", marginBottom: "2rem", lineHeight: "1.6" }}>
                 Fill out the form below and our team will respond within 24 hours.
               </p>
 
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
                 <div>
-                  <label htmlFor="name" style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "var(--near-black)", marginBottom: "0.5rem" }}>
+                  <label htmlFor="name" style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "var(--ink)", marginBottom: "0.5rem" }}>
                     Full Name *
                   </label>
                   <input
@@ -80,17 +93,17 @@ export default function Contact() {
                       width: "100%",
                       padding: "0.875rem 1rem",
                       fontSize: "1rem",
-                      border: "1px solid var(--paper-border)",
+                      border: "1px solid var(--border)",
                       borderRadius: "8px",
-                      background: "var(--warm-card)",
-                      color: "var(--near-black)",
+                      background: "var(--panel)",
+                      color: "var(--ink)",
                       transition: "all 0.2s"
                     }}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "var(--near-black)", marginBottom: "0.5rem" }}>
+                  <label htmlFor="email" style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "var(--ink)", marginBottom: "0.5rem" }}>
                     Email Address *
                   </label>
                   <input
@@ -104,17 +117,17 @@ export default function Contact() {
                       width: "100%",
                       padding: "0.875rem 1rem",
                       fontSize: "1rem",
-                      border: "1px solid var(--paper-border)",
+                      border: "1px solid var(--border)",
                       borderRadius: "8px",
-                      background: "var(--warm-card)",
-                      color: "var(--near-black)",
+                      background: "var(--panel)",
+                      color: "var(--ink)",
                       transition: "all 0.2s"
                     }}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "var(--near-black)", marginBottom: "0.5rem" }}>
+                  <label htmlFor="phone" style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "var(--ink)", marginBottom: "0.5rem" }}>
                     Phone Number
                   </label>
                   <input
@@ -127,17 +140,17 @@ export default function Contact() {
                       width: "100%",
                       padding: "0.875rem 1rem",
                       fontSize: "1rem",
-                      border: "1px solid var(--paper-border)",
+                      border: "1px solid var(--border)",
                       borderRadius: "8px",
-                      background: "var(--warm-card)",
-                      color: "var(--near-black)",
+                      background: "var(--panel)",
+                      color: "var(--ink)",
                       transition: "all 0.2s"
                     }}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "var(--near-black)", marginBottom: "0.5rem" }}>
+                  <label htmlFor="message" style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "var(--ink)", marginBottom: "0.5rem" }}>
                     Your Message *
                   </label>
                   <textarea
@@ -151,10 +164,10 @@ export default function Contact() {
                       width: "100%",
                       padding: "0.875rem 1rem",
                       fontSize: "1rem",
-                      border: "1px solid var(--paper-border)",
+                      border: "1px solid var(--border)",
                       borderRadius: "8px",
-                      background: "var(--warm-card)",
-                      color: "var(--near-black)",
+                      background: "var(--panel)",
+                      color: "var(--ink)",
                       resize: "vertical",
                       fontFamily: "inherit",
                       lineHeight: "1.6"
@@ -189,7 +202,7 @@ export default function Contact() {
             {/* Contact Info Cards */}
             <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
               <div>
-                <h2 style={{ fontSize: "1.75rem", fontWeight: "700", color: "var(--near-black)", marginBottom: "2rem" }}>
+                <h2 style={{ fontSize: "1.75rem", fontWeight: "700", color: "var(--ink)", marginBottom: "2rem" }}>
                   Contact Information
                 </h2>
               </div>
@@ -199,10 +212,10 @@ export default function Contact() {
                 <div className="icon-wrap" style={{ marginBottom: "1rem" }}>
                   <HiOutlineMapPin size={24} color="var(--deep-2)" />
                 </div>
-                <h3 style={{ fontSize: "1.125rem", fontWeight: "700", color: "var(--near-black)", marginBottom: "0.75rem" }}>
+                <h3 style={{ fontSize: "1.125rem", fontWeight: "700", color: "var(--ink)", marginBottom: "0.75rem" }}>
                   Lagos Office
                 </h3>
-                <p style={{ fontSize: "1rem", lineHeight: "1.8", color: "var(--text-muted)" }}>
+                <p style={{ fontSize: "1rem", lineHeight: "1.8", color: "var(--muted)" }}>
                   11 Bassie Ogamba Street,<br />
                   off Adeniran Ogunsanya Street,<br />
                   Surulere, Lagos
@@ -214,10 +227,10 @@ export default function Contact() {
                 <div className="icon-wrap" style={{ marginBottom: "1rem" }}>
                   <HiOutlineEnvelope size={24} color="var(--deep-2)" />
                 </div>
-                <h3 style={{ fontSize: "1.125rem", fontWeight: "700", color: "var(--near-black)", marginBottom: "0.75rem" }}>
+                <h3 style={{ fontSize: "1.125rem", fontWeight: "700", color: "var(--ink)", marginBottom: "0.75rem" }}>
                   Email Us
                 </h3>
-                <p style={{ fontSize: "1rem", lineHeight: "1.8", color: "var(--text-muted)" }}>
+                <p style={{ fontSize: "1rem", lineHeight: "1.8", color: "var(--muted)" }}>
                   <a href="mailto:info@mardysevgr.com" style={{ color: "var(--deep-2)", textDecoration: "none" }}>
                     info@mardysevgr.com
                   </a>
@@ -233,10 +246,10 @@ export default function Contact() {
                 <div className="icon-wrap" style={{ marginBottom: "1rem" }}>
                   <HiOutlinePhone size={24} color="var(--deep-2)" />
                 </div>
-                <h3 style={{ fontSize: "1.125rem", fontWeight: "700", color: "var(--near-black)", marginBottom: "0.75rem" }}>
+                <h3 style={{ fontSize: "1.125rem", fontWeight: "700", color: "var(--ink)", marginBottom: "0.75rem" }}>
                   Call Us
                 </h3>
-                <p style={{ fontSize: "1rem", lineHeight: "1.8", color: "var(--text-muted)" }}>
+                <p style={{ fontSize: "1rem", lineHeight: "1.8", color: "var(--muted)" }}>
                   <a href="tel:+2347030345373" style={{ color: "var(--deep-2)", textDecoration: "none" }}>
                     +234 703 034 5373
                   </a>
@@ -254,15 +267,15 @@ export default function Contact() {
       {/* Business Hours */}
       <section className="section-shell" style={{ background: "var(--bg)" }}>
         <div className="container" style={{ textAlign: "center", maxWidth: "48rem", margin: "0 auto" }}>
-          <h2 style={{ fontSize: "1.75rem", fontWeight: "700", color: "var(--near-black)", marginBottom: "1rem" }}>
+          <h2 style={{ fontSize: "1.75rem", fontWeight: "700", color: "var(--ink)", marginBottom: "1rem" }}>
             Business Hours
           </h2>
-          <p style={{ fontSize: "1rem", lineHeight: "1.8", color: "var(--text-muted)", marginBottom: "2rem" }}>
+          <p style={{ fontSize: "1rem", lineHeight: "1.8", color: "var(--muted)", marginBottom: "2rem" }}>
             Monday - Friday: 8:00 AM - 6:00 PM<br />
             Saturday: 9:00 AM - 2:00 PM<br />
             Sunday: Closed
           </p>
-          <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", fontStyle: "italic" }}>
+          <p style={{ fontSize: "0.875rem", color: "var(--muted)", fontStyle: "italic" }}>
             For urgent matters outside business hours, please send us an email and we&apos;ll respond as soon as possible.
           </p>
         </div>
@@ -304,7 +317,7 @@ export default function Contact() {
             <ul>
               <li><Link href="/privacy-policy">Privacy Policy</Link></li>
               <li><Link href="/tos">Terms &amp; Conditions</Link></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="/services#faq">FAQ</a></li>
             </ul>
           </div>
 
