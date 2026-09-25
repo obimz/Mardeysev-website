@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Navbar from "./components/Navbar";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaTiktok } from "react-icons/fa6";
+import Footer from "./components/Footer";
 import {
   MdOutlineCalendarMonth,
   MdOutlineBolt,
@@ -182,7 +182,7 @@ export default function Home() {
   });
   const [status, setStatus] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("Thank you for your message! We'll get back to you within 24 hours.");
     setFormData({ name: "", email: "", phone: "", message: "" });
@@ -198,8 +198,9 @@ export default function Home() {
 
   return (
     <main className="site-shell">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Navbar />
-      <section className="hero section-shell">
+      <section className="hero section-shell" id="main-content">
         <Image
           src="/images/solarspace2.jpg"
           alt="Solar panels generating clean energy under a bright sky"
@@ -506,22 +507,22 @@ export default function Home() {
           </div>
 
           <form className="quote-form" onSubmit={handleSubmit}>
-            <label>
-              Name
-              <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your full name" required />
-            </label>
-            <label>
-              Email
-              <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="you@example.com" required />
-            </label>
-            <label>
-              Phone
-              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Your phone number" />
-            </label>
-            <label>
-              Message
-              <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your property and power needs..." required />
-            </label>
+            <div>
+              <label htmlFor="contact-name">Name</label>
+              <input id="contact-name" type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your full name" required />
+            </div>
+            <div>
+              <label htmlFor="contact-email">Email</label>
+              <input id="contact-email" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="you@example.com" required />
+            </div>
+            <div>
+              <label htmlFor="contact-phone">Phone</label>
+              <input id="contact-phone" type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Your phone number" />
+            </div>
+            <div>
+              <label htmlFor="contact-message">Message</label>
+              <textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your property and power needs..." required />
+            </div>
             <button type="submit" className="button button-primary full-width">
               Send message
             </button>
@@ -530,71 +531,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="site-footer">
-        <div className="container footer-grid">
-          <div>
-            <h3>Mardysev Solar Limited</h3>
-            <p style={{ marginBottom: '1.5rem', lineHeight: '1.8' }}>
-              <strong>Lagos Office</strong><br />
-              11 Bassie Ogamba Street,<br />
-              off Adeniran Ogunsanya Street,<br />
-              Surulere, Lagos
-            </p>
-            <p style={{ lineHeight: '1.8' }}>
-              Email: <a href="mailto:info@mardysevgr.com">info@mardysevgr.com</a>
-            </p>
-            <p style={{ marginTop: '1rem', lineHeight: '1.8' }}>
-              Phone: <a href="tel:+2347030345373">+234 703 034 5373</a>
-            </p>
-          </div>
-
-          <div>
-            <h4>Quick Links</h4>
-            <ul>
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About</Link></li>
-              <li><Link href="/services">Services</Link></li>
-              <li><Link href="/blog">Blog</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4>Company</h4>
-            <ul>
-              <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-              <li><Link href="/tos">Terms &amp; Conditions</Link></li>
-              <li><a href="/services#faq">FAQ</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4>Follow Us</h4>
-            <div className="social-links">
-              <a href="https://web.facebook.com/profile.php?id=61562569504710" aria-label="Mardysev Solar on Facebook" title="Facebook">
-                <FaFacebookF aria-hidden="true" />
-              </a>
-              <a href="https://www.linkedin.com/company/mardysev-solar/" aria-label="Mardysev Solar on LinkedIn" title="LinkedIn">
-                <FaLinkedinIn aria-hidden="true" />
-              </a>
-              <a href="https://www.instagram.com/mardysev_solar?igsh=MmViczRpaDBjZjVr" aria-label="Mardysev Solar on Instagram" title="Instagram">
-                <FaInstagram aria-hidden="true" />
-              </a>
-              <a href="https://www.youtube.com/@Mardysevsolarlimited" aria-label="Mardysev Solar on YouTube" title="YouTube">
-                <FaYoutube aria-hidden="true" />
-              </a>
-              <a href="https://www.tiktok.com/@mardysevsolarsolu?_t=ZM-8xWwN1vCHjB&_r=1" aria-label="Mardysev Solar on TikTok" title="TikTok">
-                <FaTiktok aria-hidden="true" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="container footer-bottom">
-          <span>© 2026 Mardysev Solar Limited</span>
-          <span>Engineered for Reliability & Sustainable Power</span>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
