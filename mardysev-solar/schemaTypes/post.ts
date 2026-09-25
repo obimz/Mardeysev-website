@@ -48,5 +48,19 @@ export default defineType({
         {type: 'image'},
       ],
     }),
+    defineField({
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      description: 'Feature this post in the carousel on the blog page',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'category'}}],
+      description: 'Select categories for this post. Use "Projects", "Case Studies", or "Installations" to feature in the carousel',
+    }),
   ],
 })

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { HiMagnifyingGlass, HiOutlineCalendar, HiOutlineClock } from "react-icons/hi2";
@@ -18,6 +18,7 @@ export default function BlogClient({ allPosts, categories }: BlogClientProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [featuredIndex, setFeaturedIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(6);
+  const [isHovering, setIsHovering] = useState(false);
 
   // Filter posts based on search
   const filteredPosts = useMemo(() => {
@@ -36,9 +37,27 @@ export default function BlogClient({ allPosts, categories }: BlogClientProps) {
     return posts;
   }, [allPosts, searchQuery]);
 
-  // Featured posts (ALL posts with images)
-  const featuredPosts = allPosts.filter(post => post.mainImage?.asset);
+  // Featured posts (filter for Projects, Case Studies, Installations categories OR featured flag)
+  const featuredPosts = allPosts.filter(post => {
+    const hasProjectCategory = post.categories?.some(cat =>
+      ['Projects', 'Case Studies', 'Installations', 'Installation', 'Project'].includes(cat)
+    );
+    return post.mainImage?.asset && (hasProjectCategory || post.featured);
+  });
   const currentFeatured = featuredPosts[featuredIndex];
+
+  // Auto-play timer with hover pause
+  useEffect(() => {
+    if (featuredPosts.length === 0 || isHovering) return;
+
+    const timer = setInterval(() => {
+      setFeaturedIndex((prev) =>
+        prev === featuredPosts.length - 1 ? 0 : prev + 1
+      );
+    }, 2000); // 2 seconds auto-advance
+
+    return () => clearInterval(timer);
+  }, [featuredPosts.length, isHovering]);
 
   // Grid posts (ALL filtered posts, including the featured ones)
   const gridPosts = filteredPosts;
@@ -57,7 +76,11 @@ export default function BlogClient({ allPosts, categories }: BlogClientProps) {
 
   return (
     <>
-      <div style={{ paddingTop: "5rem", paddingBottom: "4rem" }}>
+      <div
+        style={{ paddingTop: "5rem", paddingBottom: "4rem" }}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
         <div className="container">
           {/* Blog Header - Centered */}
           <div className="text-center pt-4 pb-3 md:pt-6 md:pb-4">
@@ -77,6 +100,19 @@ export default function BlogClient({ allPosts, categories }: BlogClientProps) {
                   {/* Left Column - Content */}
                   <div className="flex flex-col justify-between text-white relative z-10">
                     <div>
+                      {/* Featured Project Badge */}
+                      {currentFeatured.categories?.some(cat =>
+                        ['Projects', 'Case Studies', 'Installations'].includes(cat)
+                      ) && (
+                        <div className="mb-4">
+                          <span className="bg-amber-500/20 text-amber-400 text-xs px-2.5 py-1 rounded-full uppercase tracking-wider font-semibold">
+                            Featured {currentFeatured.categories?.find(cat =>
+                              ['Projects', 'Case Studies', 'Installations'].includes(cat)
+                            ) || 'Project'}
+                          </span>
+                        </div>
+                      )}
+
                       {/* Category Pills */}
                       <div className="flex flex-wrap gap-2 mb-6">
                         {currentFeatured.categories && currentFeatured.categories.slice(0, 2).map((cat) => (
@@ -202,7 +238,7 @@ export default function BlogClient({ allPosts, categories }: BlogClientProps) {
                 <div className="flex justify-center mb-16">
                   <button
                     onClick={handleLoadMore}
-                    className="inline-flex items-center gap-2 text-lg font-bold text-[var(--deep)] hover:text-[var(--deep-2)] transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--gold)] text-white font-bold text-lg rounded-lg hover:bg-amber-600 transition-all duration-300 shadow-md hover:shadow-lg"
                   >
                     Load more
                     <svg
