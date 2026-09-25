@@ -65,7 +65,7 @@ export default function BlogClient({ allPosts, categories }: BlogClientProps) {
               Mardysev Blog
             </h1>
             <p className="text-xl md:text-2xl text-[var(--muted)] max-w-3xl mx-auto leading-relaxed mb-4">
-              Get behind the scenes on our solar installations, industry insights, and the people powering Nigeria's clean energy future.
+              Get behind the scenes on our solar installations, industry insights, and the people powering Nigeria&apos;s clean energy future.
             </p>
           </div>
 

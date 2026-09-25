@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "../components/Navbar";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaTiktok } from "react-icons/fa6";
 import {
@@ -15,28 +16,32 @@ const services = [
     title: "Energy Audits/Engagements",
     description: "Our work starts with your energy needs and goals. We begin with developing insight on the best way to serve the customer by engaging you on those needs through partnership and empathetic listening to fully understand you. We then see how what you are aiming for matches an energy mix that is both technically and economically feasible for you. In the end, you get a plan, a consumption documentation and guide, and/or an exhaustive reportage of what energy setup would serve your needs efficiently.",
     features: ["Energy Planning", "Managed Consumption", "Reporting", "Advisory & Insights"],
-    icon: <HiOutlineClipboardDocumentCheck />
+    icon: <HiOutlineClipboardDocumentCheck />,
+    image: "/images/services/service1.jpg"
   },
   {
     number: "02",
     title: "Strategy & Evaluation",
     description: "Following the customer's approval, an implementation plan is put together. Evaluation typically aligns the defined work modules with resources, tasks, and deliverables to ensure a successful deployment. Project implementation timelines are customer and construction dependent. Your toolkit is replete with our thinking behind the recommendations, best value tactics, implementation plans, and resource needs, including sourcing and deployment. Our strategy puts you in full control of your energy consumption.",
     features: ["Energy Roadmapping", "Research & Development", "Resource Sourcing", "Solution Architecting"],
-    icon: <HiOutlineLightBulb />
+    icon: <HiOutlineLightBulb />,
+    image: "/images/services/service2 1.jpg"
   },
   {
     number: "03",
     title: "Execution",
     description: "We translate the customer's desire into defined work modules and create corresponding plans detailing the equipment to be deployed. Customer involvement is pivotal for all reviews, feedback, and final approval to implement. We work either with our team of electrical and power engineering experts. Our installations also follow strategy and quality assurance policies which we manage in-house so that your system can have the quality and integrity to work without any hassle or headache to you.",
     features: ["Installations", "Quality Assurance & Control", "Ongoing Support"],
-    icon: <HiOutlineWrenchScrewdriver />
+    icon: <HiOutlineWrenchScrewdriver />,
+    image: "/images/services/service3.jpg"
   },
   {
     number: "04",
     title: "Operations/Maintenance",
     description: "We stay with you as you interact with your product ensuring that you continuously derive value for your investment. Routine Service and care are built into our policies to ensure the products' longevity and to retain our customers for life. Our goal is to ensure that customer is not only totally satisfied with our finished work, but becomes our partners for life.",
     features: ["Routine Maintenance", "Corrective Maintenance", "Preventive Maintenance"],
-    icon: <MdOutlineSpeed />
+    icon: <MdOutlineSpeed />,
+    image: "/images/services/service4.jpg"
   },
 ];
 
@@ -85,7 +90,7 @@ export default function ServicesPage() {
                     </div>
                     <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>{service.title}</h3>
                     <p style={{ marginBottom: '1.5rem', lineHeight: '1.7' }}>{service.description}</p>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem' }}>
                       {service.features.map((feature) => (
                         <div key={feature} style={{ padding: '0.75rem 1rem', background: 'var(--gold-soft)', border: '1px solid rgba(245, 166, 35, 0.2)', borderRadius: '8px', fontSize: '0.9rem', fontWeight: '600' }}>
                           {feature}
@@ -95,13 +100,26 @@ export default function ServicesPage() {
                   </div>
                   <div className="about-visual">
                     <div className="visual-card">
-                      <div className="visual-grid" />
-                      <div className="visual-illustration" aria-hidden="true">
-                        <span className="grid-square" />
-                        <span className="grid-square" />
-                        <span className="grid-square" />
-                        <span className="grid-square" />
-                      </div>
+                      {service.image ? (
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 566px"
+                          priority={index === 0}
+                        />
+                      ) : (
+                        <>
+                          <div className="visual-grid" />
+                          <div className="visual-illustration" aria-hidden="true">
+                            <span className="grid-square" />
+                            <span className="grid-square" />
+                            <span className="grid-square" />
+                            <span className="grid-square" />
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </>
@@ -109,13 +127,26 @@ export default function ServicesPage() {
                 <>
                   <div className="about-visual">
                     <div className="visual-card">
-                      <div className="visual-grid" />
-                      <div className="visual-illustration" aria-hidden="true">
-                        <span className="grid-square" />
-                        <span className="grid-square" />
-                        <span className="grid-square" />
-                        <span className="grid-square" />
-                      </div>
+                      {service.image ? (
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 566px"
+                          priority={index === 0}
+                        />
+                      ) : (
+                        <>
+                          <div className="visual-grid" />
+                          <div className="visual-illustration" aria-hidden="true">
+                            <span className="grid-square" />
+                            <span className="grid-square" />
+                            <span className="grid-square" />
+                            <span className="grid-square" />
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                   <div className="about-copy">
@@ -125,7 +156,7 @@ export default function ServicesPage() {
                     </div>
                     <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>{service.title}</h3>
                     <p style={{ marginBottom: '1.5rem', lineHeight: '1.7' }}>{service.description}</p>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem' }}>
                       {service.features.map((feature) => (
                         <div key={feature} style={{ padding: '0.75rem 1rem', background: 'var(--gold-soft)', border: '1px solid rgba(245, 166, 35, 0.2)', borderRadius: '8px', fontSize: '0.9rem', fontWeight: '600' }}>
                           {feature}

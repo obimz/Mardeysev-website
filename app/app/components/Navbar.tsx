@@ -6,6 +6,14 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2";
 
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
+];
+
 export default function Navbar() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
@@ -39,6 +47,13 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
   return (
     <header className={`topbar ${isScrolled ? "scrolled" : ""}`}>
       <div className="container topbar-inner">
@@ -49,11 +64,19 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="nav" aria-label="Main navigation">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/contact">Contact</Link>
+          {navLinks.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={active ? "active" : ""}
+                aria-current={active ? "page" : undefined}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -74,11 +97,20 @@ export default function Navbar() {
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
         <nav className="mobile-nav" aria-label="Mobile navigation">
-          <Link href="/" onClick={closeMobileMenu}>Home</Link>
-          <Link href="/about" onClick={closeMobileMenu}>About</Link>
-          <Link href="/services" onClick={closeMobileMenu}>Services</Link>
-          <Link href="/blog" onClick={closeMobileMenu}>Blog</Link>
-          <Link href="/contact" onClick={closeMobileMenu}>Contact</Link>
+          {navLinks.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={closeMobileMenu}
+                className={active ? "active" : ""}
+                aria-current={active ? "page" : undefined}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
       )}
     </header>
